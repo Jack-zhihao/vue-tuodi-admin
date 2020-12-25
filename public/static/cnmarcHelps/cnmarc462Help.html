@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>462字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">分集</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段用来连接分集层次的实体。本记录是属于总集级、分集级或单册级，本字段包含被连接的分集的有关数据。</p>
+<p style="margin-top:3px;">参见&nbsp; 4-- 连接款目字段结构:4--结构</p>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>100字段帮助</title>
+  <link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+    $(document).ready(
+      function () {
+        init();
+      });
+    window.resizeTo(645, 389);
+
+    function init() {
+      $(".listTable").find("tbody").find("tr:even").addClass("tabeven"); //左边表格
+      $(".listTable").find("tr").click(
+        function () {
+          $(this).parent().find("tr").removeClass("tabSelected");
+          $(this).addClass("tabSelected");
+        });
+      //右边div
+      $(".yellowDiv").find("span").hide();
+      $(".listTable").find("tbody").find("tr:first").addClass("tabSelected"); //初始时选中第一条
+      $(".yellowDiv").find("span:first").slideDown("300");
+
+      //点击行则变化右边内容
+      $(".listTable").find("tbody").find("tr").click(
+        function () {
+          $(".yellowDiv").find("span").hide();
+          var dd = this.id.substring(4, 6);
+
+          $(".yellowDiv").find("span.helpContent").each(
+            function () {
+
+              if ($(this).attr("rel").substring(4, 6) == dd) {
+
+                $(this).slideDown("300");
+              }
+            });
+          $(".yellowDiv").find("img.point").css("top", 25 + 22 * (dd - 1));
+        });
+    }
+  </script>
+  <style type="text/css">
+    .point {
+      position: absolute;
+      left: -6px;
+      top: 25px;
+    }
+
+    *html .yellowDiv div {
+      height: 202px;
+    }
+  </style>
+  <link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <p style="margin-bottom:0;">
+    <ul>一般处理数据--必备
+      <li>本字段包含适用于任何载体作品记录的基本代码数据</li>
+      <li>本字段不可重复。</li>
+      <li>指示符1：未定义，填空格。</li>
+      <li>指示符2：未定义，填空格。</li>
+      <li>────── 子字段标识符、内容、可否重复 ───────</li>
+      <li>a 一般的处理数据 不重复 固定为36个字符长</li>
+      <li>固定长数据元素：</li>
+    </ul>
+    <hr />
+    <table width="100%" cellspacing="0" style="vertical-align:top;">
+      <tr>
+        <td valign="top">
+          <table width="300" cellspacing="0" class="listTable">
+            <thead>
+              <tr style="text-align:left;">
+                <th width="8%" scope="col">&nbsp;</th>
+                <th width="48%" datatype="str" scope="col">数据元素名称</th>
+                <th width="19%" datatype="str" scope="col">字符数</th>
+                <th width="25%" datatype="str" scope="col">字符位置</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="line1">
+                <td>(1)</td>
+                <td>入档日期(必备)</td>
+                <td>8</td>
+                <td>0-7</td>
+              </tr>
+              <tr id="line2">
+                <td>(2)</td>
+                <td>出版日期类型</td>
+                <td>1</td>
+                <td>8</td>
+              </tr>
+              <tr id="line3">
+                <td>(3)</td>
+                <td>出版日期1</td>
+                <td>4</td>
+                <td>9-12</td>
+              </tr>
+              <tr id="line4">
+                <td>(4)</td>
+                <td>出版日期2</td>
+                <td>4</td>
+                <td>13-16</td>
+              </tr>
+              <tr id="line5">
+                <td>(5)</td>
+                <td>阅读对象代码</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line6">
+                <td>(6)</td>
+                <td>政府出版物代码</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line7">
+                <td>(7)</td>
+                <td>修改记录代码(必备)</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line8">
+                <td>(8)</td>
+                <td>编目语种(必备)</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line9">
+                <td>(9)</td>
+                <td>音译代码</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line10">
+                <td>(10)</td>
+                <td>字符集(必备)</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line11">
+                <td>(11)</td>
+                <td>补充字符集</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr id="line12">
+                <td>(12)</td>
+                <td>题名语系代码</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <hr />
+          <input type="button" onclick="top.window.document.getElementById('iframeBtn').click()" value="关闭(C)"
+            title="关闭(ALT+C)" class="btn_ok" style="margin: 10px 110px;" />
+        </td>
+        <td style="vertical-align: top;padding-right: -5px">
+          <div class="yellowDiv" style="width:320px;margin-top:+2px;">
+            <div style="width:307px;min-height:95px;">
+              <span class="helpContent" rel="line1">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(1)入档日期</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li>
+                      <strong> 格式为：年(4字符)月(2字符)日(2字符)。</strong>
+                    </li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line2">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(2)出版日期类型</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>a＝现期出版的连续出版物</strong></li>
+                    <li><strong>b＝已停刊的连续出版物</strong></li>
+                    <li><strong>c＝刊行状态不明的连续出版物</strong></li>
+                    <li><strong>d＝一次或一年内出全的专著</strong></li>
+                    <li><strong>e＝复制本(如重印本，摹写本，再版本)</strong></li>
+                    <li><strong>f＝出版时间不能确定的专著</strong></li>
+                    <li><strong>g＝连续出版超过一年的专著</strong></li>
+                    <li><strong>h＝既有出版时间又有版权日期的专著</strong></li>
+                    <li><strong>i＝既有发行／出版日期，又有生产日期的专著</strong></li>
+                    <li><strong>j＝具有详细出版日期的专著</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line3">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(3)出版年1</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line4">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(4)出版年2</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line5">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(5)阅读对象代码</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>a＝普通青少年</strong></li>
+                    <li><strong> b＝学龄前儿童(0-5岁)</strong></li>
+                    <li><strong> c＝小学生(5-10岁)</strong></li>
+                    <li><strong> d＝少年(9-14岁)</strong></li>
+                    <li><strong> e＝青年(14-20岁)</strong></li>
+                    <li><strong> k＝研究人员</strong></li>
+                    <li><strong> m＝普通成人</strong></li>
+                    <li><strong> u＝不详</strong></li>
+                    <li><strong> z＝特殊读者(如盲人)</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line6">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(6)政府出版物代码</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>a＝中央政府，各部委</strong></li>
+                    <li><strong>b＝直辖市、省、自治区</strong></li>
+                    <li><strong>c＝省直辖市、县级</strong></li>
+                    <li><strong>d＝市、镇、乡机构</strong></li>
+                    <li><strong>f＝政府间组织机构</strong></li>
+                    <li><strong>h＝层次未定</strong></li>
+                    <li><strong>u＝不能确定是否是政府出版物</strong></li>
+                    <li><strong>y＝非政府出版物</strong></li>
+                    <li><strong>z＝其他政府层次</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line7">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(7)修改记录代码(必备)</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong> 0＝未修改的记录</strong></li>
+                    <li><strong>1＝修改的记录</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line8">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(8)编目语种(必备)</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line9">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(9)音译代码</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>a＝ISO音译体系</strong></li>
+                    <li><strong>b＝其它</strong></li>
+                    <li><strong>c＝多种音译体系；ISO或其他体系</strong></li>
+                    <li><strong>y＝未使用音译</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line10">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(10)字符集(必备)</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>01＝ISO 646, IRV version (基本拉丁集)</strong></li>
+                    <li><strong>02＝ISO Registration #37 (基本基里尔集)</strong></li>
+                    <li><strong>03＝ISO 5426 (扩充拉丁集)</strong></li>
+                    <li><strong>04＝ISO DIS 5427 (扩充基里尔集)</strong></li>
+                    <li><strong>05＝ISO 5428 (西腊集)</strong></li>
+                    <li><strong>06＝ISO 6438 (非洲编码字符集)</strong></li>
+                    <li><strong>10＝GB2312-80信息交换用汉字编码字符集资本集(双7位)</strong></li>
+                    <li><strong>11＝信息交换用汉字编码字符集基本集第一辅助集(双7位)</strong></li>
+                    <li><strong>20＝信息交换用汉字编码字符集基本集(双8位表示。基本、辅3、5集为一个集合)</strong></li>
+                    <li><strong>21＝信息交换用汉字编码字符集基本集(双8位表示的辅1、3、5集所构成的集合)</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line11">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(11)补充字符集</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>以两个2字符代码标识记录在交换中使用的补充字符集。</strong></li>
+                    <li><strong>12＝信息交换试用汉字编码字符集辅助集3(双7位)</strong></li>
+                    <li><strong>13＝信息交换试用汉字编码字符集辅助集5(双7位)</strong></li>
+                  </ul>
+                </p>
+              </span>
+              <span class="helpContent" rel="line12">
+                <img class="point" src="images/yellowDiv/point.gif" />
+                <h5>(12)题名语系代码</h5>
+                <hr />
+                <p>
+                  <ul>
+                    <li><strong>ba＝拉丁语</strong></li>
+                    <li><strong>fa＝阿拉伯语</strong></li>
+                    <li><strong>ca＝基里尔语</strong></li>
+                    <li><strong>ga＝西腊语</strong></li>
+                    <li><strong>da＝日语-文字类型未指明</strong></li>
+                    <li><strong>ha＝希伯来语</strong></li>
+                    <li><strong>db＝日语-汉字</strong></li>
+                    <li><strong>ia＝泰语</strong></li>
+                    <li><strong>dc＝日语-假名</strong></li>
+                    <li><strong>ja＝梵语</strong></li>
+                    <li><strong>ea＝汉语-文字类型未指明</strong></li>
+                    <li><strong>ka＝朝鲜语</strong></li>
+                    <li><strong>eb＝汉语-汉字</strong></li>
+                    <li><strong>la＝泰米尔语</strong></li>
+                    <li><strong>ec＝汉语-汉语拼音</strong></li>
+                    <li><strong>zz＝其它</strong></li>
+                  </ul>
+                </p>
+              </span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+</body>
+
+</html>

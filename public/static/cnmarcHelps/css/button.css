@@ -1,0 +1,183 @@
+/**鏈珻SS閽堝鎵�湁鎸夐挳瀹氫箟**/
+.btn__{
+	border:none;
+	padding:2px 2px 0 2px;
+	margin: 2px 5px;
+	font-size:12px;
+	height:20px;
+	width:65px;
+	color:#ffffff;
+	background:url(../images/btn__.gif) #0a6fab top left no-repeat;
+}
+
+.btn__disabled{
+	background-image:url(../images/btn__disabled.gif);
+}
+
+.btn_add{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_add.gif) #0a6fab top left no-repeat;
+}
+
+.btn_add_disabled{
+	background: url(../images/btn_add_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_del{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_del.gif) #0a6fab top left no-repeat;
+}
+.btn_del_disabled{
+	background: url(../images/btn_del_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_mdf{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_mdf.gif) #0a6fab top left no-repeat;
+}
+.btn_mdf_disabled{
+	background: url(../images/btn_mdf_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_none{
+	border: none;
+	margin: 2px 5px;
+	padding: 0px 2px 0 2px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_none.gif) #0a6fab top left no-repeat;
+}
+.btn_none_disabled{
+	background: url(../images/btn_none_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_close{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_close.gif) #0a6fab top left no-repeat;
+}
+.btn_close_disabled{
+	background: url(../images/btn_close_disabled.gif) #0a6fab top left no-repeat;
+}
+
+
+.btn_retrun{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_retrun.gif) #0a6fab top left no-repeat;
+}
+.btn_return_disabled{
+	background: url(../images/btn_return_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_find{
+	border: none;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_find.gif) #0a6fab top left no-repeat;
+}
+.btn_find_disabled{
+	background: url(../images/btn_find_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_go{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_go.gif) #0a6fab top left no-repeat;
+}
+.btn_go_disabled{
+	background: url(../images/btn_go_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_reset{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_reset.gif) #0a6fab top left no-repeat;
+}
+.btn_reset_disabled{
+	background: url(../images/btn_reset_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_cancel{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 26px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_cancel.gif) #0a6fab top left no-repeat;
+}
+.btn_cancel_disabled{
+	background: url(../images/btn_cancel_disabled.gif) #0a6fab top left no-repeat;
+}
+
+.btn_ok{
+	border: none;
+	margin: 2px 5px;
+	padding: 2px 8px 0 19px;
+	font-size: 12px;
+	color: white;
+	height: 20px;
+	width: 65px;
+	background: url(../images/btn_ok.gif) #0a6fab top left no-repeat;
+}
+.btn_ok_90{
+	background: url(../images/btn_ok_90.gif) #0a6fab top left no-repeat;
+}
+.btn_ok_disabled{
+	background: url(../images/btn_ok_disabled.gif) #0a6fab top left no-repeat;
+}
+.bark{
+	width:170px;
+	height:15px;
+	}
+#btnsearch{
+	vertical-align: top;
+}
+	
+	
+	

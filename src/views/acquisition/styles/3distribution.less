@@ -1,0 +1,135 @@
+// 上左-上右-下方布局
+.three-distribution {
+  /deep/ .el-scrollbar__wrap {
+    overflow-x: hidden !important;
+  }
+  .c-tab__header {
+    display: flex;
+    height: 36px;
+    align-items: center;
+    background: @topBgColor;
+    .header__item {
+      cursor: pointer;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 17px;
+      font-size: @FSize_15;
+      &.active {
+        font-weight: bold;
+        color: @primaryColor;
+        background: @contentHdColor;
+      }
+    }
+  }
+  .cus__table {
+    /deep/  th,
+    /deep/  td {
+      padding: 1px 0;
+    }
+    
+  }
+  /deep/ .el-table .el-button {
+    padding: 0;
+  }
+  .wrapper {
+    background: @contentHdColor;
+    height: ~"calc(100% - 42px)";
+    border-bottom: 1px solid @borderColor;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid @borderColor;
+    .top-left {
+      width: ~"calc(100% - 613px)";
+      flex: auto;
+      border-right: 1px solid @borderColor;
+      .el-table {
+        margin-top: 4px;
+      }
+    }
+    .top-right {
+      border-left: 1px solid @borderColor;
+      margin-left: 5px;
+      flex-basis: 606px;
+      flex-shrink: 0;
+      .content {
+        padding: 0 10px;
+      }
+      .el-form-item {
+        margin-bottom: 18px;
+      }
+      .header {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 20px;
+        background: @topBgColor;
+        border-bottom: 1px solid @borderColor;
+        .item {
+          display: flex;
+          align-items: center;
+          flex: auto;
+          margin: 2px 0;
+          .label {
+            flex-shrink: 0;
+            font-weight: bold;
+          }
+          .value {
+            line-height: 1;
+            padding: 6px 10px;
+            background: @contentHdColor;
+            border-radius: 4px;
+          }
+        }
+      }
+      .el-form {
+        padding-top: 18px;
+        /deep/ .el-form-item__label {
+          text-align-last: justify;
+          position: relative;
+          &:after {
+            content: "：";
+            position: absolute;
+            right: 0px;
+          }
+        }
+        .item__textarea {
+          display: flex;
+          /deep/ .el-form-item__content {
+            flex: 1;
+          }
+        }
+        .el-form-item.is-required {
+          /deep/ .el-form-item__label {
+            &::before {
+              position: absolute;
+              left: -8px;
+              top: 3px;
+              content: "*";
+              color: @dangerColor;
+            }
+          }
+        }
+      }
+      .el-select,
+      .el-input,
+      .el-input-number {
+        width: 180px;
+      }
+    }
+  }
+  .bottom {
+    margin-bottom: 8px;
+  }
+  .footer {
+    background: @contentHdColor;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+    .el-button {
+      padding: 8px 30px;
+    }
+  }
+}

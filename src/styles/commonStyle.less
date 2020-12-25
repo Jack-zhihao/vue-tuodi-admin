@@ -1,0 +1,252 @@
+.common__content {
+
+  // 顶部按钮区域
+  .header__ops {
+    padding-right: 20px;
+  }
+
+  // 主体区域
+  .content {
+    height: ~"calc(100% - 36px)";
+    border-radius: 0px 0px 4px 4px;
+    background: @contentHdColor;
+
+    .content__header {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0px 20px 3px 15px;
+      align-items: center;
+
+      .header__line {
+        display: flex;
+        height: 28px;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 3px;
+        font-size: @FSize_14;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .label {
+          white-space: nowrap;
+          font-size: @FSize_14;
+        }
+        .gap_r {
+          margin-right: 13px;
+        }
+        .group__filter_type {
+          margin-right: 0 !important;
+          flex: 0 0 100px !important;
+          &.sm {
+            flex: 0 0 80px!important;
+          }
+          /deep/ .el-input__inner {
+            border-color: @borderColor;
+            border-right: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        .group__filter_value {
+          /deep/ .el-input__inner {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+
+        .el-input {
+          flex: 0 1 200px;
+          margin-right: 13px;
+        }
+
+        .el-date-editor {
+          flex: 0 1 150px;
+          margin-right: 13px;
+        }
+
+        .el-date-editor--datetime {
+          flex: 0 1 155px;
+          margin-right: 13px;
+        }
+
+        .el-select {
+          flex: 0 1 120px;
+          margin-right: 13px;
+          &.multi {
+            flex:0 1 150px;
+          }
+        }
+
+        .filter__date {
+          flex: 0 1 130px;
+          margin-right: 13px;
+        }
+      }
+
+    }
+  }
+
+  .content__table {
+    height: ~"calc(100% - 31px - 32px)";
+    &.line2 {
+      height: ~"calc(100% - 62px - 32px)";
+    }
+    &.line3 {
+      height: ~"calc(100% - 93px - 32px)";
+    }
+    &.line4 {
+      height: ~"calc(100% - 124px - 32px)";
+    }
+    &.percent_6 {
+      height: ~"calc(60% - 31px - 32px)";
+    }
+    &.percent_4 {
+      height: ~"calc(40% - 36px - 32px)";
+    }
+    &.percent_4_0 {
+      // 没有分页
+      height: ~"calc(40% - 36px)";
+    }
+    .el-table {
+      height: 100%;
+    }
+  }
+
+  .content__page {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    justify-content: flex-end;
+    background: @contentBgColor;
+  }
+}
+
+// 页面右侧浮层
+.common__side_form {
+  .edit__header {
+    display: flex;
+    align-items: center;
+    font-size: @FSize_16;
+    height: 50px;
+    padding-right: 20px;
+    justify-content: space-between;
+
+    // 浮层有多个菜单
+    .tits {
+      display: flex;
+    }
+
+    .tit {
+      cursor: pointer;
+      line-height: 50px;
+      padding: 0 20px;
+      color: @fontDarkerColor;
+      font-weight: bold;
+      font-size: @FSize_15;
+
+      &.active {
+        color: @primaryColor;
+        background: @contentBgColor;
+      }
+    }
+
+    i {
+      color: @primaryColor;
+      cursor: pointer;
+    }
+  }
+
+  .edit__content {
+    padding: 0 20px;
+  }
+
+  
+  .edit__footer {
+    display: flex;
+    height: 54px;
+    align-items: center;
+    justify-content: space-between;
+
+    .el-button {
+      // font-size: @FSize_14;
+    }
+  }
+}
+
+// 自定义表单样式
+.custom__form {
+  .custom__form_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tit {
+    width: 100%;
+    font-weight: bold;
+    font-size: @FSize_15;
+    margin: 20px 0;
+    color: @fontDarkerColor;
+  }
+
+  .item {
+    display: flex;
+    flex: 0 0 50%; // 默认宽度
+    .item__radio,
+    .item__text,
+    .el-textarea,
+    .el-input,
+    .el-input-number,
+    .el-select {
+      width: 230px;
+    }
+    &.mb_8 {
+      margin-bottom: 8px;
+    }
+    &.mb_15 {
+      margin-bottom: 15px;
+    }
+    &.item__line {
+      flex: 0 0 100%;
+    }
+    &.item__3 {
+      flex: 0 0 33%;
+      .item__radio,
+      .item__text,
+      .el-textarea,
+      .el-input,
+      .el-input-number,
+      .el-select {
+        width: 110px;
+      }
+    }
+
+    /deep/.el-form-item__content {
+      margin-left: 0 !important;
+    }
+
+    /deep/ .el-form-item__label {
+      text-align-last: justify;
+      position: relative;
+      flex-shrink: 0;
+
+      &:after {
+        content: "：";
+        position: absolute;
+        right: 0px;
+      }
+    }
+
+    &.is-required {
+      /deep/ .el-form-item__label {
+        &::before {
+          position: absolute;
+          left: -8px;
+          top: 3px;
+          content: "*";
+          color: @dangerColor;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>710字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">团体名称--主要责任者</h1>
+<hr />
+<p style="margin-bottom:0px; margin-top:3px;">本字段包括对该作品负有主要责任的团体名称(检索点形式)。在编<br />
+&nbsp; 目规则确认了“主要款目”概念情况下使用。</p>
+<p style="margin-bottom:0px; margin-top:3px;">本字段不重复。在同一记录中，700、710、720字段不能同时存在。</p>
+<p style="margin:5px;">指示符1：标识主标目是团体名称还是会议名称。</p>
+<ul style="margin:0px; margin-left:40px;">
+	<li>0 -- 团体名称</li>
+	<li>1 -- 会议名称</li>
+</ul>
+<p style="margin:5px;">指示符2：标识名称的著录方式。</p>
+<ul style="margin:0px; margin-left:40px;">
+	<li>0 -- 名称以倒序方式著录</li>
+	<li>1 -- 主标目为地区名称</li>
+	<li>2 -- 名称一直序方式著录</li>
+</ul>
+<hr />
+<table width="495" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="6%" scope="col">&nbsp;</th>
+			<th width="19%" datatype="str" scope="col">子字段标识符</th>
+			<th width="63%" datatype="str" scope="col">内容</th>
+			<th width="12%" datatype="str" scope="col">可否重复</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>a</td>
+			<td>主标目</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>b</td>
+			<td>副标目</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>c</td>
+			<td>名称修饰语</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>d</td>
+			<td>会议届次</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>e</td>
+			<td>会议地点</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>f</td>
+			<td>会议日期</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>g</td>
+			<td>名称倒装部分</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>h</td>
+			<td>其余部分(不包括主标目及倒装部分)</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>3</td>
+			<td>规范记录号</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>4</td>
+			<td>著作责任(采用《普通图书著录规则》10.1.5.10说明)</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>11</td>
+			<td>A</td>
+			<td>主标目汉语拼音</td>
+			<td>不重复</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>332字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">引文</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段包含本辑录著录的资料引文。形式可依照原文本身，也可由编目机构选择。</p>
+<p style="margin-top:3px;margin-bottom:0">本字段可重复。</p>
+<p style="margin:5px;">指示符未定义，填空格。</p>
+<hr />
+<table width="407" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="6%" scope="col">&nbsp;</th>
+			<th width="25%" datatype="str" scope="col">子字段标识符</th>
+			<th width="45%" datatype="str" scope="col">内容</th>
+			<th width="24%" datatype="str" scope="col">可否重复</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="line1">
+			<td>1</td>
+			<td>a</td>
+			<td>附注内容</td>
+			<td>不重复</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

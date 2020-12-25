@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>327字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	//右边div
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">内容附注</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段说明作品的内容，本字段不可重复。</p>
+<p style="margin:5px;">指示符1：标识本字段附注是否完整地记录了作品的内容(或组成部分)。</p>
+<ul>
+	<li>0：内容附注是不完整的</li>
+	<li>1：内容附注是完整的</li>
+</ul>
+<p style="margin:5px;">指示符2：未定义，填空格。</p>
+<hr />
+<table width="623" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="5%" scope="col">&nbsp;</th>
+			<th width="14%" datatype="str" scope="col">子字段标识符</th>
+			<th width="69%" datatype="str" scope="col">内容</th>
+			<th width="12%" datatype="str" scope="col">可否重复</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>a</td>
+			<td>附注内容--(对每个组成部分，分别记录在重复的子字段中。各数据元素可采用《文献著录总则》(GB3792.1-83)的规定形式和标点符号。)</td>
+			<td>不重复</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

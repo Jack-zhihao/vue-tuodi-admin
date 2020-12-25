@@ -1,0 +1,387 @@
+.dzgl {
+  .content__header_title {
+    .contentTitle();
+    position: relative;
+    .tool {
+      position: absolute;
+      right: 20px;
+      top: 0;
+    }
+  }
+  .content {
+    background-color: @contentBgColor;
+    height: calc(100% - 91px);
+    .toolbar {
+      position: relative;
+      padding: 0px;
+      box-sizing: border-box;
+      height: 32px;
+      transition: height 0.6s;
+      label {
+        color: @fontBaseColor;
+        font-size: @FSize_15;
+        padding-left: 10px;
+        display: inline-block;
+        position: relative;
+        margin-right: 10px;
+        &:after {
+          content: "：";
+          position: absolute;
+          right: -11px;
+        }
+      }
+      .el-select {
+        width: 120px;
+        margin-right: 10px;
+        &.el-select-120 {
+          width: 90px;
+          margin-right: 0;
+        }
+      }
+      .supplier-selection {
+        display: inline-block;
+        .el-select-supplier {
+          width: 115px;
+          margin: 0;
+          .el-input__inner {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+            &:focus {
+              border-color: #c0c4cc;
+            }
+          }
+        }
+        .el-input.supplier-key {
+          width: 225px;
+          .el-input__inner {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            &:focus {
+              border-color: #c0c4cc;
+            }
+          }
+        }
+      }
+      .more-option {
+        > div {
+          margin: 2px auto;
+        }
+        .el-date-editor {
+          width: 130px;
+          .el-range-input {
+            cursor: default;
+          }
+        }
+        .el-date-editor .el-range-separator {
+          line-height: 26px;
+        }
+      }
+    }
+    .el-table {
+      &::before {
+        background-color: transparent;
+      }
+      .cell {
+        i {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 8px;
+        }
+        .normal {
+          i {
+            background-color: #1dc147;
+          }
+        }
+        .logout {
+          i {
+            background-color: #919faf;
+          }
+        }
+        .guashi {
+          i {
+            background-color: #de5151;
+          }
+        }
+        .zanting {
+          i {
+            background-color: #fe8900;
+          }
+        }
+        .tuizheng {
+          i {
+            background-color: #ebb206;
+          }
+        }
+        .guoqi {
+          i {
+            background-color: #e32a8e;
+          }
+        }
+      }
+      .el-button {
+        padding: 0 20px;
+        font-weight: bold;
+        font-size: @FSize_16;
+      }
+      .el-table__fixed-right::before {
+        height: auto;
+      }
+    }
+  }
+  .content__pages {
+    background-color: @contentBgColor;
+    border-top: 1px solid #e9edf0;
+  }
+  .side__wrapper {
+    .side__header {
+      position: relative;
+      .el-tabs--border-card {
+        border: none;
+        .el-tabs__header {
+          border: none;
+          background-color: @topBgColor;
+          .el-tabs__item {
+            height: 50px;
+            line-height: 50px;
+            font-size: @FSize_16;
+
+            box-sizing: border-box;
+            border: none;
+            font-weight: bold;
+          }
+          .el-tabs__item.is-active {
+            color: @primaryColor;
+          }
+        }
+      }
+    }
+    .side-wrap-content {
+      .side-wrap-toolbar {
+        height: 32px;
+        line-height: 32px;
+        text-align: right;
+        padding: 0 10px;
+        box-sizing: border-box;
+        border-bottom: 1px solid @tableBorderColor;
+        .el-button {
+          color: @fontBaseColor;
+          text-align: center;
+          padding: 7.5px 0px;
+          padding-right: 15px;
+          vertical-align: top;
+          font-weight: bold;
+          span {
+            display: block;
+          }
+          .svg-icon {
+            vertical-align: bottom;
+          }
+          &:active {
+            color: @primaryColor;
+          }
+        }
+      }
+      .side-wrap-content-title {
+        font-size: @FSize_16;
+        font-weight: bold;
+        line-height: 60px;
+        margin-top: 0 !important;
+      }
+      .side-wrap-form {
+        padding: 0 20px;
+        box-sizing: border-box;
+        position: relative;
+        .picture-info-item {
+          width: 330px;
+          height: 200px;
+          position: absolute;
+          top: 60px;
+          right: 20px;
+          .fingerprint {
+            width: 200px;
+            height: 100%;
+            display: inline-block;
+            .picture-box {
+              height: 150px;
+              border-radius: 4px;
+              background-color: #e2e9f4;
+              text-align: center;
+              line-height: 150px;
+              .svg-icon {
+                font-size: 94px;
+                color: #d4dce9;
+              }
+            }
+            .finger__content {
+              display: flex;
+              justify-content: space-between;
+              padding-top: 15px;
+              .el-button {
+                padding: 8px 6px;
+                z-index: 999;
+                &:nth-child(2) {
+                  padding: 8px 12px;
+                }
+              }
+            }
+          }
+          .userface {
+            width: 110px;
+            height: 100%;
+            display: inline-block;
+            // margin-left: 20px;
+            margin-left: 210px;
+            border-radius: 4px;
+            vertical-align: top;
+            .picture-box {
+              height: 150px;
+              background-color: #e2e9f4;
+              .avatar-uploader {
+                height: 100%;
+                .el-upload {
+                  width: 100%;
+                  height: 100%;
+                  cursor: pointer;
+                  position: relative;
+                  text-align: center;
+                  line-height: 150px;
+                  .svg-icon {
+                    font-size: 72px;
+                    color: #d4dce9;
+                  }
+                }
+                .el-upload:hover {
+                  border-color: #409eff;
+                  height: 100%;
+                  width: 100%;
+                }
+              }
+              .avatar-uploader-button {
+                margin-top: 14px;
+                padding: 8px 30px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 999;
+              }
+              .avatar {
+                height: 100%;
+                width: 100%;
+                display: block;
+                img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+          }
+        }
+        .el-form-item {
+          display: inline-block;
+          width: 50%;
+          height: 36px;
+          margin-bottom: 15px !important  ;
+          vertical-align: top;
+        }
+        .xzbz-form-item {
+          .el-form-item__label {
+            float: inherit;
+            display: inline-block;
+            width: 92px;
+            white-space: nowrap;
+            text-align-last: justify;
+            position: relative;
+            margin-right: 12px;
+            padding-right: 2px;
+            text-indent: 0.5em;
+            &:after {
+              content: "：";
+              position: absolute;
+              right: -11px;
+            }
+          }
+          .el-form-item__content {
+            width: 230px;
+            display: inline-block;
+            .el-form-item__error {
+              top: 90%;
+              padding-top: 6px;
+            }
+            .el-input,
+            .el-select {
+              width: 100%;
+              .el-input__inner {
+                cursor: default;
+              }
+            }
+          }
+          &:nth-child(2n -1) {
+            text-align: right;
+          }
+          &.require {
+            .el-form-item__label {
+              &::before {
+                position: absolute;
+                left: -8px;
+                top: 0px;
+                content: "*";
+                color: @dangerColor;
+              }
+            }
+          }
+        }
+      }
+      .ztpcl-item {
+        padding: 0 20px;
+        p {
+          font-size: 18px;
+          color: #838f9d;
+          line-height: 80px;
+        }
+        label {
+          font-size: @FSize_16;
+          span {
+            font-weight: 600;
+          }
+        }
+        .el-select {
+          width: 230px;
+        }
+      }
+      .edit__content {
+        margin-top: 20px;
+      }
+    }
+    .side-wrap-footer {
+      padding: 10px 0;
+      border-top: 1px solid @tableBorderColor;
+      .el-button {
+        float: right;
+        padding: 8px 30px;
+      }
+    }
+    .log-pane {
+      height: 100%;
+      padding: 25px 20px;
+      box-sizing: border-box;
+    }
+  }
+  .el-dialog__body {
+    .el-dialog-item {
+      margin-bottom: 20px;
+      .el-radio {
+        margin-bottom: 20px;
+      }
+      .el-date-editor.el-input,
+      .el-date-editor.el-input__inner {
+        width: 200px;
+      }
+      .el-input,
+      .el-input__inner {
+        width: 200px;
+      }
+    }
+  }
+}

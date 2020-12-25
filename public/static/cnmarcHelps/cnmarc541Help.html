@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>541字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">编目员补充的翻译题名</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段含有文献上出现的某个题名的译名，该译名由编目员提供。本字段选择使用，可重复。</p>
+<p style="margin:5px;">指示符1：题名意义指示符，说明是否为该翻译题名生成检索点（或附加款目）。</p>
+<ul style="margin:3px;margin-left:40px;">
+	<li>0  翻译题名无意义，不用此名生成检索点。</li>
+	<li>1&nbsp; 翻译题名有意义，用此名生成检索点。</li>
+</ul>
+<p style="margin:5px;">指示符2：未定义，填空格。</p>
+<hr />
+<table width="575" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="6%" scope="col">&nbsp;</th>
+			<th width="23%" datatype="str" scope="col">子字段标识符</th>
+			<th width="53%" datatype="str" scope="col">内容</th>
+			<th width="18%" datatype="str" scope="col">可否重复</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="line1">
+			<td>1</td>
+			<td>a</td>
+			<td>翻译题名</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>e</td>
+			<td>其它题名信息</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>h</td>
+			<td>分辑号</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>i</td>
+			<td>分辑名称</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>z</td>
+			<td>翻译题名语种</td>
+			<td>不重复</td>
+		</tr>
+		<tr id="line2">
+			<td>6</td>
+			<td>A</td>
+			<td>翻译题名汉语拼音</td>
+			<td>不重复</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

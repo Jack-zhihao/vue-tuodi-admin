@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>520字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">前题名（连续出版物）</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段记载新题名的连续出版物的较早题名，这些不同的题名描述同一书目实体，数据库里只维护一个记录，因此，较早的题名可作交替题名处理。本字段可重复。</p>
+<p style="margin:5px;">指示符１：与500字段的相同。</p>
+<p style="margin:5px;">指示符2：未定义，填空格。</p>
+<hr />
+<table width="683" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="6%" scope="col">&nbsp;</th>
+			<th width="23%" datatype="str" scope="col">子字段标识符</th>
+			<th width="53%" datatype="str" scope="col">内容</th>
+			<th width="18%" datatype="str" scope="col">可否重复</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="line1">
+			<td>1</td>
+			<td>a</td>
+			<td>前正题名</td>
+			<td>不重复</td>
+		</tr>
+		<tr id="line2">
+			<td>2</td>
+			<td>e</td>
+			<td>其它题名信息</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>h</td>
+			<td>分册号</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>i</td>
+			<td>分册名</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>j</td>
+			<td>前题名卷号或日期</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>n</td>
+			<td>其他信息</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>x</td>
+			<td>前题名的ISSN</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>A</td>
+			<td>前题名的汉语拼音</td>
+			<td>不重复</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>E</td>
+			<td>其他题名信息汉语拼音</td>
+			<td>可重复</td>
+		</tr>
+		<tr id="line3">
+			<td>10</td>
+			<td>I</td>
+			<td>分册名汉语拼音</td>
+			<td>不重复</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

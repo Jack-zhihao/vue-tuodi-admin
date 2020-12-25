@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>410字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:110px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">丛编</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段用来连接本著录实体所从属的丛编的有关数据。</p>
+<p style="margin-top:3px;margin-bottom:0">本字段不可重复。</p>
+<p style="margin:5px;">指示符1:未定义，填空格。</p>
+<p style="margin:5px;">指示符2:表示本字段是否用来做附注</p>
+<ul>
+	<li>0-- 不做</li>
+	<li>1-- 做</li>
+</ul>
+<hr />
+<ol style="margin-left: 40px;">
+	<li>410字段记录丛编款目的检索点形式, 225字段为国际标准书目著录的丛编项，应照录资料上载有的丛编数据。</li>
+	<li>若需要同时向上连接丛编和附属丛编, 可重复使用410字段。第一个410字段连接丛编, 第二个410字段连接附属丛编。</li>
+	<li>本字段的子字段­1嵌套被连接记录的数据。这数据可能是被连接记录的记录标识号，或者被连接记录内的一个或几个数据字段的具体数据，或者是两者均有。</li>
+	<li>若记录结构强调连接在等级关系上分散的记录时, 也可采取另一种作法,即用461字段连接丛编, 用462字段连接附属丛编。</li>
+</ol>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

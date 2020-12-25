@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>001字段帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+window.resizeTo(645,370);
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+	
+	//点击行则变化右边内容
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(".yellowDiv").find("span").hide();
+		var dd = this.id.substring(4,5);
+		$(".yellowDiv").find("span.helpContent").each(
+		function(){
+			if ($(this).attr("rel").substring(4,5) == dd){
+				$(this).slideDown("300");
+			}
+		});
+		$(".yellowDiv").find("img.point").css("top",25+22*(dd-1));
+	});
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:202px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p style="margin-bottom:0;">
+<ul>记录控制号--必备
+<li>本字段包含能唯一标识本记录的控制号，由编制本书目记录的机构提供。本字段不可重复。</li>
+<li>本字段没有指示符。</li>
+<li>本字段没有子字段标识符。</li>
+<li>本字段数据为10个字符长。固定长数据元素。</li>
+</ul>
+<hr />
+<table width="100%" cellspacing="0" style="vertical-align:top;">
+	<tr>
+		<td valign="top">
+			<table width="300" cellspacing="0" class="listTable">
+				<thead>
+				<tr style="text-align:left;">
+					<th width="8%" scope="col">&nbsp;</th>
+					<th width="48%" datatype="str" scope="col">数据元素名称</th>
+					<th width="19%" datatype="str" scope="col">字符数</th>
+					<th width="25%" datatype="str" scope="col">字符位置</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="line1">
+					<td>1</td>
+					<td>资料类型代码</td>
+					<td>5</td>
+					<td>0-4</td>
+				</tr>
+				<tr id="line2">
+					<td>2</td>
+					<td>编目年</td>
+					<td>1</td>
+					<td>5</td>
+				</tr>
+				<tr id="line3">
+					<td>3</td>
+					<td>编目流水号</td>
+					<td>4</td>
+					<td>6-9</td>
+				</tr>
+			</tbody>
+		</table>
+			<hr />
+			<input type="button" onclick="top.window.document.getElementById('iframeBtn').click()" value="关闭(C)" title="关闭(ALT+C)"  class="btn_ok" style="margin: 10px 110px;" />
+		</td>
+		<td style="vertical-align: top;padding-right: -5px">
+			<div class="yellowDiv" style="width:320px;margin-top:+2px;">
+				<div style="width:307px;min-height:95px;">
+					<span class="helpContent" rel="line1">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>资料类型代码:</h5>
+							<hr />
+					<p>
+						<ul>
+							<li>中文图书      <strong>01</strong></li>
+							<li>中文期刊      <strong>11</strong></li>
+							<li>西文图书      <strong>02</strong></li>
+							<li>西文期刊      <strong>12</strong></li>
+							<li>日文图书      <strong>03</strong></li>
+							<li>日文期刊      <strong>13</strong></li>
+							<li>俄文图书      <strong>04</strong></li>
+							<li>俄文期刊      <strong>14</strong></li>
+						</ul>
+					 </p>
+					</span>
+					<span class="helpContent" rel="line2">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>编目年:</h5>
+						<hr />
+						<p>
+						两位数的年份。</p>
+					</span>
+					<span class="helpContent" rel="line3">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>编目流水号:</h5>
+						<hr />
+							<p>流水号，无特别意义。</p>
+					</span>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

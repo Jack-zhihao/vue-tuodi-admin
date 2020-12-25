@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>010字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+window.resizeTo(350,400);
+</script>
+</head>
+<body>
+<p style="margin-bottom:0;"><strong>国际标准书号(ISBN)</strong>
+<hr />
+	<ul>
+		<li>本字段包含国际标准书号。当记录包含多个ISBN时，需加区分的修饰成分。</li>
+		<li>该字段还包含作品的可获得方式或价格。</li>
+		<li>本字段可重复。在有效的ISBN超过一个的情况下，可重复使用。</li>
+		<li>两个指示符未定义，填空。</li>
+	</ul>
+<div style="text-align:center">
+	<table width="300" cellspacing="0" class="listTable">
+		<thead>
+			<tr style="text-align:left;">
+				<th width="35%" datatype="str" scope="col">子字段标识符</th>
+				<th width="43%" datatype="str" scope="col">内容</th>
+				<th width="22%" datatype="str" scope="col">可否重复</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="line1">
+				<td>a</td>
+				<td>ISBN号</td>
+				<td>不重复</td>
+			</tr>
+
+			<tr>
+				<td>b</td>
+				<td>装订方式</td>
+				<td>不重复</td>
+			</tr>
+			<tr>
+				<td>d</td>
+				<td>获得方式和/或定价</td>
+				<td>不重复</td>
+			</tr>
+			<tr id="line3">
+				<td>z</td>
+				<td>错误的ISBN号</td>
+				<td>可重复</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<hr />
+<div style="text-align:center;margin:10px;">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

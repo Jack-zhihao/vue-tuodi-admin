@@ -1,0 +1,235 @@
+/* Table
+-------------------------- */
+.el-table {
+  font-size: @FSize_14;
+  thead {
+    color: @fontDarkerColor;
+    .cell {
+      white-space: nowrap;
+    }
+  }
+  .cell {
+    padding-left: 5px !important;
+    padding-right: 5px;
+  }
+  .caret-wrapper {
+    height: 19px;
+    .ascending {
+      top: -3px;
+    }
+    .descending {
+      bottom: 0;
+    }
+  }
+}
+.el-table
+ th, .el-table td {
+  padding: 1px 0;
+  cursor: default;
+}
+
+// 斑马行颜色
+.el-table--striped .el-table__body tr.el-table__row--striped {
+  background: #f1efef;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: transparent;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped:hover > td {
+  background: #c6e4f9;
+}
+.el-table--striped .el-table__body tr.row-selection{
+  background: #c6e4f9;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped.hover-row{
+  background: #c6e4f9;
+}
+
+/* scrollbar
+-------------------------- */
+.el-scrollbar__bar.is-vertical {
+  z-index: 99999;
+}
+/* Menu
+-------------------------- */
+.el-menu {
+  border-right: none;
+  font-weight: bold;
+  .el-submenu__title {
+    height: 34px;
+    line-height: 34px;
+    color: #454F5A;
+    font-size: @FSize_15;
+    padding: 0 5px !important;
+    .svg-icon {
+      color: #69ADF3;
+    }
+  }
+  .el-menu-item {
+    font-size: @FSize_14;
+    height: 34px;
+    line-height: 34px;
+    color: @fontBaseColor;
+    min-width: 180px;
+    &.is-active {
+      color: #378DE6;
+    }
+  }
+  &.el-menu--collapse {
+    text-align: center;
+  }
+}
+
+/* Pagination
+-------------------------- */
+.el-pagination {
+  button {
+    border:1px solid @tableBorderColor;
+    border-radius:4px;
+  }
+  .el-pager li {
+    border:1px solid @tableBorderColor;
+    border-radius:4px;
+    margin: 0 5px;
+    font-weight: normal;
+    font-size: @FSize_14;
+    &.active {
+      color: #fff;
+      background: @primaryColor;
+      + li {
+        border-left: 1px solid @tableBorderColor;
+        &:hover {
+          border-left-color: @primaryColor;
+        }
+      }
+    }
+    &:hover {
+      color: @primaryColor;
+      border-color: @primaryColor;
+      &.active {
+        color: #fff;
+        border-color: transparent;
+      }
+    }
+  }
+}
+.iconfont {
+  font-size: 14px;
+}
+.el-select.multi {
+  // .el-select__tags {
+  //   .el-tag {
+  //     max-width: 70px;
+  //     overflow: hidden;
+  //   }
+  // }
+  &.line {
+    .el-select__tags {
+      overflow: hidden;
+      flex-wrap: nowrap;
+    }
+  }
+}
+/* Scrollbar
+-------------------------- */
+.el-scrollbar.scroll__hide {
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+}
+/* Dialog
+-------------------------- */
+.el-dialog.scroll__hide {
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+}
+.el-dialog {
+  box-shadow:0px 0px 40px 0px rgba(0, 0, 0, 0.16);
+  .el-dialog__header {
+    padding: 13px;
+    background: #E3E7EB;
+  }
+  .el-dialog__title {
+    color: @fontDarkColor;
+    font-weight: bold;
+    font-size: @FSize_15;
+  }
+  .el-dialog__body {
+    padding: 10px;
+    height: 50vh;
+  }
+  .el-dialog__footer {
+    padding: 10px 0;
+    margin: 0 10px;
+    border-top: 1px solid @tableBorderColor;
+    .el-button {
+      padding: 7px 30px;
+    }
+  }
+}
+/* Form
+-------------------------- */
+.el-form {
+  .el-form-item__error {
+    padding-top: 2px;
+  }
+  // .el-form-item__label {
+  //   line-height: 32px;
+  // }
+  // .el-form-item__content {
+  //   line-height: 32px;
+  // }
+  // .el-form-item {
+  //   margin-bottom: 18px;
+  // }
+}
+/* Button
+-------------------------- */
+.el-button--small {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+.el-button--primary:hover, .el-button--primary:focus {
+  background: #0079FE;
+}
+/* MessageBox
+-------------------------- */
+// 让确定放在左边
+.el-message-box .el-message-box__btns .el-button:first-child {
+  float: right;
+  margin-left: 10px;
+}
+
+/* Upload
+-------------------------- */
+.el-progress-bar__innerText {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Textarea
+-------------------------- */
+.el-textarea__inner {
+  padding: 5px;
+}
+
+/* Input
+-------------------------- */
+.el-input__inner {
+  padding: 0 5px;
+}
+
+.el-input__prefix {
+  left: 0;
+}
+.el-input--prefix .el-input__inner {
+  padding-left: 20px;
+}
+
+.el-input__suffix {
+  right: 0;
+}
+.el-input--suffix .el-input__inner {
+  padding-right: 20px;
+}

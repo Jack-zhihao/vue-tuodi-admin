@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>101字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+window.resizeTo(645,535);
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+	
+	//点击行则变化右边内容
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(".yellowDiv").find("span").hide();
+		var dd = this.id.substring(4,5);
+		$(".yellowDiv").find("span.helpContent").each(
+		function(){
+			if ($(this).attr("rel").substring(4,5) == dd){
+				$(this).slideDown("300");
+			}
+		});
+		$(".yellowDiv").find("img.point").css("top",25+22*(dd-1));
+	});
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:202px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">作品语种</h1>
+<hr />
+<p style="margin-bottom:0; margin-top:3px;">本字段包含作品正文及其题名的语种代码。若作品是译文本，则还包含其原著语种代码。本字段不可重复。</p>
+<p style="margin:5px;">指示符1：翻译指示符。表明作品是否是译文或含译文。</p>
+<ul style="margin-top:2px;margin-bottom:2px; list-style:none;">
+	<li>0－作品为原文</li>
+	<li>1－作品为译文</li>
+	<li>2－包含译文(摘要除外)</li>
+</ul>
+<p style="margin:5px;">指示符2：未定义，填空格。</p>
+<p style="margin-top:3px;margin-bottom:3px;">每一子字段用三个字符位置标识语种代码。在未修订出ISO标准之前，暂用“美国国会图书馆语言和语言代码修订表”(见附录二)。</p>
+<p style="margin:4px 0;">当一个子字段重复出现时，语种编码的排列次序将反映该语种  在作品中使用的程度和重要性。如果对这种区别不能作出判断，  则按照语种的代码排列。如果在某个子字段要记录很多个语种,也可使用代码“mul”</p>
+<hr />
+<table width="629" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="6%" scope="col">&nbsp;</th>
+			<th width="25%" datatype="str" scope="col">子字段标识符</th>
+			<th width="44%" datatype="str" scope="col">内容</th>
+			<th width="25%" datatype="str" scope="col">可否重复</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>a</td>
+			<td>正文语种</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>b</td>
+			<td>中间语种(当作品不是直接译自原作时)</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>c</td>
+			<td>原作语种</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>d</td>
+			<td>提要或文摘语种</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>e</td>
+			<td>目次页语种(与正文页语种不同时)</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>f</td>
+			<td>题名页语种(与正文语种不同时)</td>
+			<td>可重复</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>g</td>
+			<td>正题名语种(与正文语种不同时)</td>
+			<td>不重复</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

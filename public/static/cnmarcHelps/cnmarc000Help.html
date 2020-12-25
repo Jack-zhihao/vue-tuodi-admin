@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>000字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+window.resizeTo(653,427);
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+	
+	//点击行则变化右边内容
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(".yellowDiv").find("span").hide();
+		var dd = this.id.substring(4,5);
+		$(".yellowDiv").find("span.helpContent").each(
+		function(){
+			if ($(this).attr("rel").substring(4,5) == dd){
+				$(this).slideDown("300");
+			}
+		});
+		$(".yellowDiv").find("img.point").css("top",25+22*(dd-1));
+	});
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:202px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p style="margin-bottom:0;">记录头标是按照ISO 2709的规定设立的。它包括处理记录 时可能需要的有关记录的一般性信息。整个头标区固定为24个 字符长，由固定长数据元素组成，这些数据元素通过字符位置来标识。</p>
+<hr />
+<table width="100%" cellspacing="0" style="vertical-align:top;">
+	<tr>
+		<td valign="top">
+			<table width="300" cellspacing="0" class="listTable">
+				<thead>
+				<tr style="text-align:left;">
+					<th width="8%" scope="col">&nbsp;</th>
+					<th width="48%" datatype="str" scope="col">名称</th>
+					<th width="19%" datatype="str" scope="col">字符数</th>
+					<th width="25%" datatype="str" scope="col">字符位置</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="line1">
+					<td>1</td>
+					<td>记录长度</td>
+					<td>5</td>
+					<td>0-4</td>
+				</tr>
+				<tr id="line2">
+					<td>2</td>
+					<td>记录状态</td>
+					<td>1</td>
+					<td>5</td>
+				</tr>
+				<tr id="line3">
+					<td>3</td>
+					<td>执行代码</td>
+					<td>4</td>
+					<td>6-9</td>
+				</tr>
+				<tr id="line4">
+					<td>4</td>
+					<td>指示符长度</td>
+					<td>1</td>
+					<td>10</td>
+				</tr>
+				<tr id="line5">
+					<td>5</td>
+					<td>子字段标识符长度</td>
+					<td>1</td>
+					<td>11</td>
+				</tr>
+				<tr id="line6">
+					<td>6</td>
+					<td>数据基地址</td>
+					<td>5</td>
+					<td>12-16</td>
+				</tr>
+				<tr id="line7">
+					<td>7</td>
+					<td>记录附加定义</td>
+					<td>3</td>
+					<td>17-19</td>
+				</tr>
+				<tr id="line8">
+					<td>8</td>
+					<td> 地址目次结构 </td>
+					<td>4</td>
+					<td>20-23</td>
+				</tr>
+			</tbody>
+		</table>
+			<hr />
+			<input type="button" onclick="top.window.document.getElementById('iframeBtn').click()" value="关闭(C)" title="关闭(ALT+C)"  class="btn_ok" style="margin: 10px 110px;" />
+		</td>
+		<td style="vertical-align: top;padding-right: -5px">
+			<div class="yellowDiv" style="width:320px;margin-top:+2px;">
+				<div style="width:307px;min-height:200px;">
+					<span class="helpContent" rel="line1">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>记录长度:</h5>
+							<hr />
+							<p><strong>5</strong>个十进制数。右边对齐，不足<strong>5</strong>个数字时用零补齐。</p>
+					</span>
+					<span class="helpContent" rel="line2">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>记录状态:</h5>
+						<hr />
+						<p>
+							代码:
+						</p><ul style="list-style:none;margin-top: 3px;">
+							<li><span class="helpContent" rel="line2"><strong>c</strong>＝修改过的记录</span></li>
+							<li><span class="helpContent" rel="line2"><strong>d</strong>＝删除的记录</span></li>
+							<li><span class="helpContent" rel="line2"><strong>n</strong>＝新记录</span></li>
+							<li><span class="helpContent" rel="line2"><strong>o</strong>＝曾为较高层次记录</span></li>
+							<li><span class="helpContent" rel="line2"><strong>p</strong>＝曾为不完整的预编记录</span></li>
+						</ul>
+					<p></p>
+					</span>
+					<span class="helpContent" rel="line3">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>执行代码:</h5>
+						<hr />
+						<p>
+					</p><ol style="margin-top:3px;" >
+						<li>记录类型，<strong>1</strong>字符
+									<ul>
+										<li><strong>a</strong>＝印刷的文字资料</li>
+										<li><strong>b</strong>＝手稿性的文字资料</li>
+									</ul>
+						</li>
+								<li>书目级别，<strong>1</strong>字符
+									<ul>
+										<li><strong>m</strong>＝单行本─专著或多卷集</li>
+										<li><strong>s</strong>＝连续出版物─连续发行并趋向无限期连续发行的出版物</li>
+										<li><strong>b</strong>＝分析性资料─物理上包含在另一种资料里的一种资料，它是另一种资料的组成部分</li>
+										<li><strong>c</strong>＝汇编性著作─人为配套的著作集</li>
+									</ul>
+						</li>
+								<li>层次等级代码，<strong>1</strong>字符。表示记录和其它记录有层次连接关系，说明在层次中的相对位置以及记录与同一文件中其它记录的从属关系
+									<ul>
+										<li><strong>空格</strong>＝层次关系未定</li>
+										<li><strong>0</strong>＝无层次关系</li>
+										<li><strong>1</strong>＝最高层记录</li>
+										<li><strong>2</strong>＝低层次记录(在最高层以下的记录</li>
+									</ul>
+						</li>
+								<li>未定义，空格</li>
+					</ol>
+						<p></p>
+					</span>
+					<span class="helpContent" rel="line4">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>指示符长度:</h5>
+						<hr />
+						<p>表示指示符长度的<strong>1</strong>位十进制数字，CN-MARC格式为<strong>2</strong>。</p>
+					</span>
+					<span class="helpContent" rel="line5">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>子字段标识符长度:</h5>
+						<hr />
+						<p>表示子字段标识符长度的<strong>1</strong>位十进制数字，CN-MARC格式为<strong>2</strong>。</p>
+					</span>
+					<span class="helpContent" rel="line6">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>数据基地址:</h5>
+						<hr />
+						<p>占<strong>5</strong>个字符位，用十进制数表示。它等于头标区和目次区的字符总数。右边对齐，不足<strong>5</strong>位时左边填零。</p>
+					</span>
+					<span class="helpContent" rel="line7">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>记录附加定义:</h5>
+						<hr />
+					<p>
+					</p><ol>
+						<li>编目等级：用<strong>1</strong>个字符代码标识机读记录的完整程度，以及建立该记录时是否查阅过原作品。
+							<ul>
+								<li><strong>空格</strong>＝完全级。表示该记录建立时依据了原作品。</li>
+								<li><strong>1</strong>＝次级。表示该记录建立时未依据了原作品。</li>
+								<li><strong>2</strong>＝次级2。表示该记录是预编(在版编目)记录。它是利用校对单编目的，一般不太完整，如缺载体形态项。</li>
+								<li><strong>3</strong>＝次级3。表示编目未达到完全级的记录。</li>
+							</ul>
+							</li>
+							<li>著录格式：用<strong>1</strong>位字符代码标识记录中的各著录项目是否采用ISBD格式。
+								<ul>
+									<li><strong>空格</strong>＝完全采用ISBD格式</li>
+									<li><strong>b</strong>＝不是采用ISBD格式</li>
+									<li><strong>i</strong>＝部分采用ISBD格式</li>
+								</ul>
+							</li>
+							<li>未定义，填空格</li>
+						</ol>
+					<p></p>	
+					</span>	
+					<span class="helpContent" rel="line8">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>地址目次项结构:</h5>
+						<hr />
+					<p>
+					</p><ol style="margin-top:3px;">
+						<li>　　.“数据字段长度”的长度：用<strong>1</strong>位十进制数指明每个目次项 的“数据字段长度”部分的字符数，CN-MARC格式为4</li><br />
+								<li>　　.“起始字符位置”的长度：用<strong>1</strong>位十进制数指明每个目次项的“起始字符位置”部分的字符数。CN-MARC格式取值为<strong>5</strong></li><br />
+								<li>　　.未定义，填两个<strong>空格</strong>。</li>
+					</ol>
+						<p></p>
+					</span>				</div>
+			</div>		</td>
+	</tr>
+</table>
+
+</body>
+</html>

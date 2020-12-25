@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>102字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+window.resizeTo(530,345);
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+	
+	//点击行则变化右边内容
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(".yellowDiv").find("span").hide();
+		var dd = this.id.substring(4,5);
+		$(".yellowDiv").find("span.helpContent").each(
+		function(){
+			if ($(this).attr("rel").substring(4,5) == dd){
+				$(this).slideDown("300");
+			}
+		});
+		$(".yellowDiv").find("img.point").css("top",25+22*(dd-1));
+	});
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:202px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">出版国别</h1>
+<hr />
+<p style="margin:4px 0;">本字段包含作品的一个或多个出版国代码。
+本字段不可重复。</p>
+<ul style="margin-top:2px;margin-bottom:2px; list-style:none;">
+	<li>指示符1：未定义，填空格。</li>
+	<li>指示符2：未定义，填空格。</li>
+</ul>
+<hr />
+<table width="523" cellspacing="0" class="listTable">
+	<thead>
+		<tr style="text-align:left;">
+			<th width="4%" scope="col">&nbsp;</th>
+			<th width="17%" datatype="str" scope="col">子字段标识符</th>
+			<th width="18%" datatype="str" scope="col">内容</th>
+			<th width="14%" datatype="str" scope="col">可否重复</th>
+			<th width="47%" datatype="str" scope="col">备注</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>a</td>
+			<td>出版国代码</td>
+			<td>可重复</td>
+			<td>采用GB2659-81两字符代码，见附录一</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>b</td>
+			<td>出版地区代码</td>
+			<td>可重复</td>
+			<td>国内地区采用GB2260-84，见附录四</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<div style="margin:10px; text-align:center">
+	<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+</div>
+</body>
+</html>

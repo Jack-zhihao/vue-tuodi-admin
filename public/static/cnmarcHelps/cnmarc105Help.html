@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>105字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+window.resizeTo(860,562);
+function init(){
+	$("#table1").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$("#table1").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$("#table1").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+	
+	//点击行则变化右边内容
+	$("#table1").find("tbody").find("tr").click(
+	function(){
+		$(".yellowDiv").find("span").hide();
+		var dd = this.id.substring(4,5);
+		$(".yellowDiv").find("span.helpContent").each(
+		function(){
+			if ($(this).attr("rel").substring(4,5) == dd){
+				$(this).slideDown("300");
+			}
+		});
+		$(".yellowDiv").find("img.point").css("top",72+22*(dd-1));
+	});
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 72px;
+}
+*html .yellowDiv div{
+height:226px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">代码数据字段: 图书</h1>
+<hr />
+<p style="margin:4px 0;">本字段包含有关图书的代码数据。本字段不可重复。对于图书为必备字段。</p>
+<ul style="margin-top:2px;margin-bottom:2px; list-style:none;">
+	<li>指示符1：未定义，填空格。</li>
+	<li>指示符2：未定义，填空格。</li>
+</ul>
+<hr />
+<table width="100%" cellspacing="0">
+	<tr>
+		<td width="63%" style="vertical-align:top">
+			<table width="523" cellspacing="0" class="listTable">
+				<thead>
+					<tr style="text-align:left;">
+						<th width="9%" scope="col">&nbsp;</th>
+						<th width="19%" datatype="str" scope="col">子字段标识符</th>
+						<th width="20%" datatype="str" scope="col">内容</th>
+						<th width="18%" datatype="str" scope="col">可否重复</th>
+						<th width="34%" datatype="str" scope="col">长度</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>a</td>
+						<td>图书编码数据</td>
+						<td>不重复</td>
+						<td>13个字符长</td>
+					</tr>
+					<tr>
+						<td style="background-color:#6FC4F7; color:#FFFFFF; font-weight:bold; line-height:120%;text-align:center">A<br />
+						子<br />
+						字<br />
+						段<br />
+						的<br />
+						详<br />
+						细<br />
+						说<br />
+						明</td>
+						<td colspan="4" style="background-color:#33CCFF;">
+							<table width="488" cellspacing="0" class="listTable" id="table1">
+								<thead>
+									<tr style="text-align:left;">
+										<th width="10%" scope="col">&nbsp;</th>
+										<th width="32%" scope="col">数据元素名称</th>
+										<th width="30%" scope="col">字符数</th>
+										<th width="28%" scope="col">字符位置</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr id="line1">
+										<td>1</td>
+										<td>图表代码</td>
+										<td>4</td>
+										<td>0-3</td>
+									</tr>
+									<tr id="line2">
+										<td>2</td>
+										<td>内容特征代码</td>
+										<td>4</td>
+										<td>4-7</td>
+									</tr>
+									<tr id="line3">
+										<td>3</td>
+										<td>会议代码</td>
+										<td>1</td>
+										<td>8</td>
+									</tr>
+									<tr id="line4">
+										<td>4</td>
+										<td>纪念文集指示符</td>
+										<td>1</td>
+										<td>9</td>
+									</tr>
+									<tr id="line5">
+										<td>5</td>
+										<td>索引指示符</td>
+										<td>1</td>
+										<td>10</td>
+									</tr>
+									<tr id="line6">
+										<td>6</td>
+										<td>文学体裁代码</td>
+										<td>1</td>
+										<td>11</td>
+									</tr>
+									<tr id="line7">
+										<td>7</td>
+										<td>传记代码</td>
+										<td>1</td>
+										<td>12</td>
+									</tr>
+								</tbody>
+						</table></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr />
+			<div style="margin:10px; text-align:center">
+				<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+			</div>
+		</td>
+		<td width="37%" style="vertical-align:top;">
+			<div class="yellowDiv" style="width:320px;margin-top:+2px;">
+				<div style="width:307px;min-height:226px;">
+					<span class="helpContent" rel="line1">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>图表代码:</h5>
+							<hr />
+							<p>以字母代码表示作品的载体形态项中某些项目。至多可以用4个 代码，左边对齐，不用的位置填空格。如果需用的代码多于4个，则 按下列顺序加以选择。</p>
+							<ul>
+								<li>a＝图表 (包括画册)</li>
+								<li>j＝世系表</li>
+								<li>b＝地图</li>
+								<li>k＝表格</li>
+								<li>c＝肖像</li>
+								<li>l＝样品</li>
+								<li>d＝海图</li>
+								<li>m＝录音资料</li>
+								<li>e＝设计图</li>
+								<li>n＝透明图片</li>
+								<li>f＝单页插图</li>
+								<li>o＝彩饰</li>
+								<li>g＝乐谱</li>
+								<li>y＝无图表</li>
+								<li>h＝摹真本</li>
+								<li>空格＝不用的位置</li>
+								<li>i＝徽章图</li>
+							</ul>
+					</span>
+					<span class="helpContent" rel="line2">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>内容特征代码:</h5>
+							<hr />
+							<p>以字母代码表示作品所包括的资料类型(但在代码&quot;c&quot;的情况下， 是指该作品本身是索引)。至多可用4位代码，左边对齐，不用的位 置填空格。如果需要的代码多于4个，则按照下表中的顺序加以选择。</p>
+							<ul>
+								<li>a＝书目</li>
+								<li>m＝学位论文</li>
+								<li>b＝目录</li>
+								<li>n＝法律和法规</li>
+								<li>c＝索引</li>
+								<li>o＝数字表格</li>
+								<li>d＝文摘</li>
+								<li>p＝技术报告</li>
+								<li>e＝字、词典</li>
+								<li>q＝试题</li>
+								<li>f＝百科全书</li>
+								<li>r＝文学评论</li>
+								<li>g＝人名录、指南</li>
+								<li>s＝条约</li>
+								<li>i＝统计资料</li>
+								<li>t＝卡通或连环画</li>
+								<li>j＝成套教科书</li>
+								<li>z＝其它</li>
+								<li>k＝专利文献书</li>
+								<li>l＝标准或规定</li>
+								<li>空格＝不用的位置的值</li>
+							</ul>
+					</span>
+					<span class="helpContent" rel="line3">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>会议代码:</h5>
+							<hr />
+					<p>以1个字符代码表示作品是否含有各种会议的会议录、报告或提要。</p>
+							<ul>
+								<li>0＝非会议出版物</li>
+								<li>1＝会议出版物</li>
+							</ul>
+					</span>
+					<span class="helpContent" rel="line4">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>纪念文集指示符:</h5>
+							<hr />
+					<p>以1个字符代码表示作品是否纪念文集。</p>
+							<ul>
+								<li>0＝非纪念文集</li>
+								<li>1＝纪念文集</li>
+							</ul>
+					</span>
+					<span class="helpContent" rel="line5">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>索引指示符:</h5>
+							<hr />
+					<p>以1个字符代码表示作品是否含有正文的索引。</p>
+							<ul>
+								<li>0＝无索引</li>
+								<li>1＝有索引</li>
+							</ul>
+					</span>
+					<span class="helpContent" rel="line6">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>文学体裁代码:</h5>
+							<hr />
+					<p>若作品属于文学作品，以1个字符代码表示作品的文学体裁类型。</p>
+							<ul>
+								<li>a＝小说</li>
+								<li>f＝短篇小说</li>
+								<li>b＝戏剧</li>
+								<li>g＝诗词</li>
+								<li>c＝散文</li>
+								<li>h＝演说集</li>
+								<li>d＝幽默、讽刺小品</li>
+								<li>y＝非文学作品</li>
+								<li>e＝书信</li>
+								<li>z＝其它或多种文学体裁</li>
+							</ul>
+					</span>
+					<span class="helpContent" rel="line7">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>传记代码:</h5>
+							<hr />
+					<p>若作品属于传记，用1个字符代码表示其传记类型。</p>
+							<ul>
+								<li>a＝自传</li>
+								<li>b＝个人传记</li>
+								<li>c＝集体传记</li>
+								<li>d＝包含传记资料</li>
+								<li>y＝非传记作品</li>
+							</ul>
+					</span>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

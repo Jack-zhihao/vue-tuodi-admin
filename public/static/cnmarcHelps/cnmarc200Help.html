@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>200字段录入帮助</title>
+<link href="css/popWindow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(
+function(){
+	init();
+});
+window.resizeTo(851,656);
+function init(){
+	$(".listTable").find("tbody").find("tr:even").addClass("tabeven");//左边表格
+	$(".listTable").find("tr").click(
+	function(){
+		$(this).parent().find("tr").removeClass("tabSelected");
+		$(this).addClass("tabSelected");
+	});
+	//右边div
+	$(".yellowDiv").find("span").hide();
+	$(".listTable").find("tbody").find("tr:first").addClass("tabSelected");//初始时选中第一条
+	$(".yellowDiv").find("span:first").slideDown("300");
+	
+	//点击行则变化右边内容
+	$(".listTable").find("tbody").find("tr").click(
+	function(){
+		$(".yellowDiv").find("span").hide();
+		var dd = this.id.substring(4,5);
+		$(".yellowDiv").find("span.helpContent").each(
+		function(){
+			if ($(this).attr("rel").substring(4,5) == dd){
+				$(this).slideDown("300");
+			}
+		});
+		$(".yellowDiv").find("img.point").css("top",25+22*(dd-1));
+	});
+}
+</script>
+<style type="text/css">
+.point{
+position:absolute;
+left: -6px;
+top: 25px;
+}
+*html .yellowDiv div{
+height:395px;}
+</style>
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 style="font-size:14px; font-weight:bold; margin:5px;">题名与责任者项--必备</h1>
+<hr />
+<p style="margin:4px 0;">本字段包括ISBD的题名与责任者项，一般以出现在编目款目上的形 式和顺序记录。本字段是必备的，不可重复。</p>
+<ul style="margin-top:2px;margin-bottom:2px; list-style:none;">
+	<li>指示符1：表明编目机构是否认为题名有意义。
+		<ul>
+			<li>0  题名无意义(即不作检索点)			</li>
+		</ul>
+	</li>
+	<ul>
+		<li>1  题名有意义</li>
+	</ul>
+	<li>指示符2：未定义，填空格。(不排序的字符数)</li>
+</ul>
+<hr />
+<table width="100%" cellspacing="0">
+	<tr>
+		<td width="63%" style="vertical-align:top">
+			<table width="523" cellspacing="0" class="listTable">
+				<thead>
+					<tr style="text-align:left;">
+						<th width="4%" scope="col">&nbsp;</th>
+						<th width="16%" datatype="str" scope="col">子字段标识符</th>
+						<th width="33%" datatype="str" scope="col">内容</th>
+						<th width="47%" datatype="str" scope="col">是否重复</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id="line1">
+						<td>1</td>
+						<td>a</td>
+						<td>正题名</td>
+						<td>必备,可重复</td>
+					</tr>
+					<tr id="line2">
+						<td>2</td>
+						<td>b</td>
+						<td>一般资料标识</td>
+						<td>可重复</td>
+					</tr>
+					<tr id="line3">
+						<td>3</td>
+						<td>c</td>
+						<td>另一作者的正题名</td>
+						<td>可重复</td>
+					</tr>
+					<tr id="line4">
+						<td>4</td>
+						<td>d</td>
+						<td>并列正题名</td>
+						<td>可重复</td>
+					</tr>
+					<tr id="line5">
+						<td>5</td>
+						<td>e</td>
+						<td>副题名及其它说明题名的文字</td>
+						<td>可重复</td>
+					</tr>
+					<tr id="line6">
+						<td>6</td>
+						<td>f</td>
+						<td>第一责任者</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>g</td>
+						<td>其它责任者</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>h</td>
+						<td>分册(辑)号</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>i</td>
+						<td>分册(辑)名</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>v</td>
+						<td>卷册号标识</td>
+						<td>可重复(仅在使用4--连接款目块时使用)</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>z</td>
+						<td>并列题名语种</td>
+						<td>可重复(采用“美国国会图书馆语言和语言代码修订表”:国会表)</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>A</td>
+						<td>正题名汉语拼音</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>E</td>
+						<td>副题名、其他说明题名文字的汉语拼音</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>F</td>
+						<td>第一责任者的汉语拼音</td>
+						<td>可重复</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>I</td>
+						<td>分册(辑)名的汉语拼音</td>
+						<td>可重复</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr />
+			<div style="margin:10px; text-align:center">
+				<input type="button" class="btn_ok" value="关闭(C)" title="关闭(ALT+C)"  onclick="top.window.document.getElementById('iframeBtn').click()" />
+			</div>		</td>
+		<td width="37%" style="vertical-align:top;">
+			<div class="yellowDiv" style="width:320px;margin-top:+2px;">
+				<div style="width:307px;min-height:395px;">
+				<span class="helpContent" rel="line1">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>正题名:</h5>
+							<hr />
+							<ol style="list-style:upper-latin; margin-left:30px;margin-top: 6px">
+								<li>文献著录总则》；正题名是指文献的主要题名、交替题名、合订题名。</li>
+								<li>交替题名: 是指同一文献的题名(同一著者的)页上有两个或两个以上交替使用的不同的题名。将第一个题名记录在第一个$a子字段，交替题名记录在第二个$a子字段。形式为：“$a---$a又名，---”。若交替题名作为检索点，应在517字段重复反映。</li>
+								<li>合订题名:
+									<ol style="margin-left:20px; list-style:lower-roman">
+										<li>同一责任者的合订题名,重复使用$a</li>
+										<li>不同责任者的合订题名,另一著者的正题名则著录在子字段$c</li>
+										<li>正题名以外的合订题名,若作为检索点选用517字段重复反映之</li>
+									</ol>
+								</li>
+							</ol>
+					</span>
+					<span class="helpContent" rel="line2">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>一般资料类别标识:</h5>
+							<hr />
+							<p>对于通常印刷形式的书刊，编目机构可决著录否。本项目不著录。对于特殊资料类别则根据ISBD(NBM国际标准书目著录(非书资料)的一般资料类别标识表著录之。</p>
+					</span>
+					<span class="helpContent" rel="line3">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>另一著者的正题名:</h5>
+							<hr />
+							<p>第一个正题名的责任者以外的另一著者的著作的主要题名。这两个题名都出现在同一文献资料上, 而无共同题名。对于另一著者的每个附加正题名, 可以重复使用$c</p>
+					</span>
+					<span class="helpContent" rel="line4">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>并列题名:</h5>
+							<hr />
+							<p>是题名页上两种或两种以上文种、互相并列、对照的题名。并列题名按题名页上的先后顺序著录。</p>
+					</span>
+					<span class="helpContent" rel="line5">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>副题名及说明题名文字:</h5>
+							<hr />
+							<p>副题名是解释或从属于正题名的另一题名；说明题名文字是在题名前后，对文献内容范围、编辑方式、体裁、文献用途、读者对象等的说明。包括并列其它题名信息。本子字段可重复使用以便分段著录上述事项。</p>
+					</span>
+					<span class="helpContent" rel="line6">
+						<img class="point" src="images/yellowDiv/point.gif" />
+						<h5>第一责任者:</h5>
+							<hr />
+							<ol style="list-style:upper-latin; margin-left:30px; margin-top:6px;">
+								<li>此处责任者名称，根据文献著录条例应照题名页上的形式著录。(参见附件:文献著录国家标准( GB3792 )修订工作会议简报(1990.2.26-27))</li>
+								<li>同一责任方式的责任者名称之间用逗号隔开</li>
+								<li>作为检索点的责任者名称应在7--字段反映,并应采用规范化的名称</li>
+							</ol>
+					</span>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

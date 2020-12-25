@@ -1,0 +1,868 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>无标题文档</title>
+  <script src="./SpryTabbedPanels.js" type="text/javascript"></script>
+  <script src="./jquery.js" type="text/javascript"></script>
+  <link href="./SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+    $(document).ready(
+      function () {
+        init();
+        $('img').each(function (i) {
+          if (i < 9) this.src = 'images/cnMarc/00' + (i + 1) + '.png';
+          else this.src = 'images/cnMarc/0' + (i + 1) + '.png'
+        });
+      });
+
+    function init() {
+      var tabsID = 0;
+      var tag = 0;
+      var imgtag = [0, 12, 36, 36, 36, 43, 43, 43, 43, 43];
+
+      function doSome(that) {
+        if (tabsID == 3) tag = 10;
+        else if (tabsID == 4) tag = 40;
+        else if (tabsID == 6) tag = 17;
+        else if (tabsID == 7) tag = 37;
+        else if (tabsID == 8) tag = 46;
+        else tag = 0;
+        $(".helpContent").hide();
+        that.find(".helpContent").eq(tag).slideDown(100);
+        that.find("img").each(function (i) {
+          if (tabsID > 0) this.src = 'images/cnMarc/0' + (i + 1 + imgtag[tabsID]) + '.png';
+        });
+      }
+      $("ul.TabbedPanelsTabGroup").find("li").click(
+        function () {
+          tabsID = $("ul.TabbedPanelsTabGroup").find("li").index(this);
+          var helpContent = $("div.TabbedPanelsContentGroup").find("div.TabbedPanelsContent").eq(tabsID).find(
+            '.helpContentOut');
+          var url;
+          this.blur();
+          if (tabsID == 0)
+            doSome(helpContent);
+          else {
+            if (tabsID == 1)
+              url = 'cnmarcHelp1.html';
+            else if (tabsID > 1 && tabsID < 5)
+              url = 'cnmarcHelp2.html';
+            else if (tabsID > 4)
+              url = 'cnmarcHelp3.html';
+            helpContent.load(url, function () {
+              doSome(helpContent);
+            });
+          }
+          $(".leftList a").removeClass("leftList_ul_li_a_active");
+        });
+      //全局变量tabsID表示当前点击的ul.TabbedPanelsTabGroup中的li的索引值
+
+      $(".helpContent").hide();
+      $(".helpContent").eq(0).slideDown(100);
+      $(".leftList").children("ul").children("li").click(
+        function () {
+          //alert ($(this).parent().find("li").index(this));
+          var contentId = $(this).parent().find("li").index(this);
+          $("div.TabbedPanelsContentGroup").find("div.TabbedPanelsContent").eq(tabsID).find(".helpContent").hide();
+          $("div.TabbedPanelsContentGroup").find("div.TabbedPanelsContent").eq(tabsID).find(".helpContent").eq(
+            contentId + tag).slideDown(300);
+          $(this).parent().find("a").removeClass("leftList_ul_li_a_active");
+          $(this).children("a").addClass("leftList_ul_li_a_active");
+        });
+      //1.把当前选中的tabs选项卡中的div.helpContent隐藏掉
+      //2.把当前选中的tabs选项卡中与当前选中的ul.leftlist中选中的li的索引值相同的div.helpContent显示出来;
+      //3.4.点击左边的li就加上样式
+    }
+  </script>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 46px 10px 10px 10px;
+      font-family: "微软雅黑", "宋体", Arial, Verdana, sans-serif;
+      font-size: 12px;
+      background: url(images/cnMarc/bg_help.jpg) #F9F8F4 top right no-repeat;
+      line-height: 140%;
+    }
+
+    h5 {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    p {
+      margin-top: 4px;
+      margin-bottom: 4px;
+      text-indent: 2em;
+    }
+
+    hr {
+      height: 1px;
+      color: #D0CEBF;
+    }
+
+    .leftList {
+      width: 180px;
+      height: 390px;
+      border: 1px solid #DCD8C9;
+      background-color: #FFFFFF;
+      overflow: auto;
+      vertical-align: top;
+    }
+
+    .leftList ul {
+      list-style: none;
+      margin: 0;
+      padding: 1px;
+      line-height: 160%;
+      color: #999;
+    }
+
+    .leftList ul li:hover {
+      cursor: pointer;
+      background-color: #00CCFF;
+    }
+
+    .leftList ul li:hover a {
+      color: #FFFFFF;
+    }
+
+    .leftList ul li a {
+      text-decoration: none;
+      color: #999999;
+      padding-left: 10px;
+      display: block;
+      width: 168px;
+
+    }
+
+    .leftList ul li a:hover {
+      background-color: #00CCFF;
+      color: #FFFFFF;
+    }
+
+    .leftList_ul_li_a_active {
+      background-color: #003399;
+      color: #FFFFFF;
+    }
+
+    .leftList ul li a:active {
+      color: #FFFFFF;
+    }
+
+    .helpContent {
+      margin: 0;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .helpContentOut {
+      overflow-y: auto;
+      background-color: #FFFFFF;
+      border: 1px solid #DCD8C9;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <li class="TabbedPanelsTab" tabindex="1">标识块</li>
+      <li class="TabbedPanelsTab" tabindex="2">编码信息块</li>
+      <li class="TabbedPanelsTab" tabindex="3">著录信息块</li>
+      <li class="TabbedPanelsTab" tabindex="4">附注块</li>
+      <li class="TabbedPanelsTab" tabindex="5">款目连接块</li>
+      <li class="TabbedPanelsTab" tabindex="6">相关题名块</li>
+      <li class="TabbedPanelsTab" tabindex="7">主题分析块</li>
+      <li class="TabbedPanelsTab" tabindex="8">知识责任块</li>
+      <li class="TabbedPanelsTab" tabindex="9">国际使用块</li>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">001 记录处理号</a></li>
+                <li><a href="#">005 记录处理时间标识</a></li>
+                <li><a href="#">010 国际标准书号</a></li>
+                <li><a href="#">011 国际标准连续出版物号</a></li>
+                <li><a href="#">014 论文标识号</a></li>
+                <li><a href="#">020 国家书目号</a></li>
+                <li><a href="#">021 版权登记号</a></li>
+                <li><a href="#">022 政府出版物号</a></li>
+                <li><a href="#">040 CODEN（连续出版物）</a></li>
+                <li><a href="#">071 出版编号（录音和音乐）</a></li>
+                <li><a href="#">091 统一书刊号</a></li>
+                <li><a href="#">092 邮发代号</a></li>
+                <li><a href="#">094 标准号</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+                <div class="helpContent">
+                  <h5>001 记录标识号：</h5>
+                  <p>本字段包含与记录惟一相关的标识符号，即编制本书目机构分配给本记录的控制号。
+                    对所有在编文献，本字段均为必备，不可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <p>遵照GB/T 2901（ISO 2709），本字段无指示符。</p>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <p>遵照GB/T 2901（ISO 2709），本字段不设指示符。</p>
+                  <hr />
+                  <h5>字段内容注释：</h5>
+                  <pre>本字段数据可以由用户自行定义。以下内容是中国国家图书馆采用的，长度为10个字符位。
+<img /></pre>
+                  <hr />
+                  <h5>相关字段：</h5>
+                  <p>编目机构可以使用其他标识号，诸如国际标准书号、国家书目号作为记录标识号，但同时仍然要把它们记入到规定的字段。</p>
+                  <hr />
+                  <h5>示例：</h5>
+                  <p>例1：<br />
+                    　　　001 002237490<br />
+                    　　　　注：中国国家图书馆编制的一种中文普通图书记录的记录标识号。<br />
+                    　　例2：<br />
+                    　　　001 B7512345<br />
+                    　　　　注：该记录采用英国国家书目号B7512345作为记录标识号，同时，该号还要记入020字段。
+                  </p>
+                </div>
+                <div class="helpContent">
+                  <h5>005 记录处理时间标识：</h5>
+                  <p>本字段包含与记录惟一相关的标识符号，即编制本书目机构分配给本记录的控制号。
+                    对所有在编文献，本字段均为必备，不可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <p>遵照ISO 2709，本字段无指示符。</p>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <p>遵照ISO 2709，本字段不设指示符。</p>
+                  <hr />
+                  <h5>字段内容注释：</h5>
+                  <p>日期以I S O 2 0 1 4标准形式记载： Y Y Y Y M M D D。Y Y Y Y表示年， M M表示月，
+                    DD表示日。
+                    时间以H HM MS S.T形式记载， H H表示小时， M M表示分钟， S S表示秒， T表示
+                    1／10秒。
+                    各项数据均右对齐，不足时左边空位填0(零)。</p>
+                  <hr />
+                  <h5>示例：</h5>
+                  <p>例：<br />
+                    　　005 19850501141236.0<br />该记录最后处理时间为：1985年5月1日14时12分36秒。
+                  </p>
+                </div>
+                <div class="helpContent">
+                  <h5>010 国际标准书号：</h5>
+                  <p>本字段包含国际标准书号及其限定字样。当记录含有多个ISBN时，该限定字样可
+                    将其区分开。本字段对应ISBD的标准书号和获得方式。即使没有ISBN，本字段也可包
+                    含获得方式和／或定价。
+                    本字段选择使用，当有多个有效的ISBN数据时，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <p>指示符1：未定义， 填空格。<br />
+                    指示符2：未定义， 填空格。</p>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <p><img /></p>
+                  <hr />
+                  <h5>子字段注释：</h5>
+                  <p>
+                    $a ISBN
+                    包含连接符“ -”的正确使用的ISBN。ISBN由各个国家指定的机构分配。本
+                    子字段不重复。<br />
+                    $b 限定
+                    子字段$a的ISBN范围的标记。通常为出版社名称、出版物装订标记或ISBN属
+                    某集或某卷的关系说明(例3)。本子字段不重复。<br />
+                    $d 获得方式和／或定价
+                    作品的定价和有关获得方式的注释(例1，2，3)。不重复。<br />
+                    $z 错误的ISBN
+                    错误使用的或无效的ISBN。可能是分配给两个出版物而后又被取消，或许是印刷错误。本子字段可重复。</p>
+                  <hr />
+                  <h5>示例：</h5>
+                  <p>例1<br />
+                    010 ##$a7-118-00294-1$b精装$d 55.00<br />
+                    例2<br />
+                    010 ##$a963-592-149-7$d$25.00(Outside Hungary)<br />
+                    例3<br />
+                    010 ##$d 3.50
+                    010 ##$b精装$d 4.50</p>
+                </div>
+                <div class="helpContent">
+                  <h5>011 国际标准连续出版物号：</h5>
+                  <p>本字段包含由ISDS(国际连续出版物数据系统)分配的ISSN(包括已分配和已取
+                    消的)，获得方式和／或价格。它与ISBD(S)的标准号和获得方式项相对应，但识别题名
+                    记入530字段。
+                    本字段选择使用，当记录含有多个ISSN时，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <p>指示符1：未定义， 填空格。<br />
+                    指示符2：未定义， 填空格。</p>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <p><img /></p>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <p>
+                    $a ISSN<br />
+                    包含数字中间使用连接符“-”的正确ISSN。本子字段不可重复。<br />
+                    $b <br />限定
+                    当记录中有多个ISSN时，则在ISSN之间使用限定的信息区分。本子字段不可
+                    重复。ISDS未采用该子字段。<br />
+                    $d <br />获得方式和／或定价
+                    作品定价和有关获得方式的注释(例3)。本子字段可重复。<br />
+                    $y <br />取消的ISSN记载曾是有效的但是后来由ISDS中心取消的ISSN(例2)。本子字段可重复。<br />
+                    $z <br />错误的ISSN
+                    记载除$y子字段所含数据以外的任何错误的ISSN，大多数属印刷错误。本子
+                    字段可重复。</p>
+                  <hr />
+                  <h5>示例：</h5>
+                  <p>例1<br />
+                    011 ##$a0003-9756<br />
+                    例2<br />
+                    011 ##$a0105-00645＄y0036-5646<br />
+                    例3<br />
+                    011 ##$a0260-7743＄d仅对政府官员免费</p>
+                </div>
+                <div class="helpContent">
+                  <h5>014 论文标识号：</h5>
+                  <p>本字段包含一个分配给期刊论文的唯一的、没有二义性的代码。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 论文标识号。不重复。
+$z 错误的论文标识号。可重复。
+$2 系统代码。不重复。
+本子字段包含一个论文标识编制系统代码，其论文标识号就是按该系统构造的。对中
+国的论文标识，建议采用ISO 9115。不可重复。</pre>
+                  <hr />
+                  <h5>示例：</h5>
+                  <p>014 ##$a0024-2519／91／6103-0003$01.00$2sici<br />
+                    这是发表在Library Quarterly 杂志第61 卷3 期上的一篇题名为“ Core
+                    Journal Networks and Cocitation Maps:New Biliometric Tools for Serials
+                    Research and Management”的论文标识号。第2个$符号是引文的组成部分，不是
+                    子字段标识符。</p>
+                </div>
+                <div class="helpContent">
+                  <h5>020 国家书目号：</h5>
+                  <p>本字段包含由国家书目机构对每条书目记录分配的国家书目号码，以及该机构的国
+                    家代码。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 国家代码
+国家书目机构的国家标识(例1-3)。不可重复。
+$b 国家书目号
+由国家书目机构分配的号码(例1-3)。不可重复。
+$z 错误的国家书目号
+错误的号码(例2)。可重复。</pre>
+                  <hr />
+                  <h5>示例：</h5>
+                  <pre>例1 020 $aCN＄b85003204
+这是一个中国国家书目号。
+例2 020 $aCA$bCM73-6722XF
+020 $aCA$zCM78-6722XF
+一个正确的和一个错误的加拿大国家书目号。
+例3
+020 $aDD$b83，A16，0553
+020 $aDD$b82，N46，0092
+第一个是在版编目时德国国家书目机构分配的号码，第二个是正式编目
+时分配的号码。两个德国国家书目号。</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>021 版权登记号：</h5>
+                  <p>本字段包含由国家版权机构分配给作品的号码。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a国家代码
+分配该号码的版权机构的国家标识。不可重复。
+$b 版权登记号
+由国家版权机构分配的号码。不可重复。
+$z 错误的版权登记号
+错误分配的号码。可重复。</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>022 政府出版物号：</h5>
+                  <p>本字段包含由政府机构分配给政府出版物或以政府名义出版的出版物号码。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 国家代码
+出版该文献的国家代码。不可重复。
+$b 政府出版物号
+政府机构分配的号码。不可重复。
+$z 错误的政府出版物号
+错分的政府出版物号码。可重复。</pre>
+                  <hr />
+                  <h5>示例：</h5>
+                  <pre>例1
+022 $aZA$bRP64／77
+例2
+022 $aUSSbHE17.302W58／91</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>040 CODEN(连续出版物)：</h5>
+                  <p>本字段包含由国际CODEN组织分配给连续出版物题名的一种唯一的没有二义性的
+                    代码。
+                    本字段选择使用。可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a CODEN
+六位字符代码，最后一位是字母数字位。不可重复。
+$z 错误的CODEN
+错误的CODEN。可重复。</pre>
+                  <hr />
+                  <h5>内容字段注释</h5>
+                  <p>CODEN是由国际CODEN机构分配给科技连续出版物题名的具有唯一性的六位字
+                    符代码。
+                    前五个字符是字母，并且以题名为基础产生 最后一位是校验位。如JACSAT是
+                    Journal of the American Chemical Society的CODEN，最后一位T是校验位。</p>
+                  <h5>示例：</h5>
+                  <pre>例1 040 $aANPYA2
+是Annalen der Physik的CODEN。
+例2
+040 $aJPHYA7
+是Journal of Physiology的CODEN。</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>071 出版者作品号 (录音和音乐)：</h5>
+                  <p>本字段包含出版者赋予作品的编号，用于录音和音乐出版物。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：出版者作品号的类型
+该指示符说明本字段所包含的出版者作品号的类型。如果要用本字段产生附注，也可由它生成导词(例2)。
+0 出版发行号
+1 版型号
+2 印版号
+3 其它出版者作品号(印刷乐谱)
+指示符2：附注指示符
+该指示符说明提供记录的机构是否使用本字段的数据生成附注。如无需生成附注(或许是因为该机构已在300或301字段中作了详细说明(例
+2))，则本位置为0。
+0 不作附注
+1 作附注</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 出版者作品号
+出版发行机构分配给作品的号码。本子字段不可重复。
+$b 来源
+分配该号的机构。本子字段不可重复。</pre>
+                  <hr />
+                  <h5>内容字段注释</h5>
+                  <pre>
+  出版发行号(或标签号)是用于识别发行标识或序列标志的号码，该号由出版者给出。如：某种录音资料的编号、某种录音资料封装的边角上
+所贴号码、演出节目的录音资料号、或以整套发行的一组录音资料的编号等。出版发行号通常出现在标签上，也常出现在这些录音资料的封
+装上。就整套录音资料而言，出版发行号可能标示于每张唱片上，同时又在封装上有一个附加的套号。
+   版型号用于识别压制出的某种录音资料的主盘、通常刻制在腊盘上，用以标识缺少出版发行号或标签号的录音资料。
+   印版号是出版者给予音乐出版物的序列号，通常印在音乐出版物每页的底部，有时也出现在题名页上。
+   其他出版者作品号类似于印版号，但是并不在音乐出版物的每页上出现。它们可以出现在音乐出版物的题名页上、封面上、和／或第一页上。</pre>
+                  <hr />
+                  <h5>示例：</h5>
+                  <pre>例1 071 01$aSTMA 8007$bTamla Motown
+一种录音资料的出版发行标志，出版者为Tamla Motown。生成的附注
+如下：
+Tamla Motown:STMA 8007
+例2 071 21$aA 880 V$bArs Viva Verlag
+印刷乐谱的一个印版号，生成的附注如下：
+pl.no.:A 880 V</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>091 统一书刊号：</h5>
+                  <p>本字段包含我国出版部门为书刊分配的统一号码。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 统一书刊号
+由国家出版部门分配的号码，不可重复。
+$b 限定。不可重复。
+$d 定价。可重复。
+$z 错误的统一书刊号
+错误的号码。可重复。</pre>
+                  <hr />
+
+                  <h5>示例：</h5>
+                  <pre>例1
+091 $a3009.236$d 3.65
+例2
+091 $a11-2598</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>092 邮发代号：</h5>
+                  <p>本字段包含我国书刊发行部门分配的邮发代号。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 国家代码
+分配该号码机构的国家标识。不可重复。
+$b 国内邮发代号
+由国家发行部门分配的向国内发行的征订号码。不可重复。
+$c 国外邮发代号
+由国家发行部门分配的向国外发行的征订号码。不可重复。
+$z 错误邮发代号
+分配错误的邮发代号。可重复</pre>
+                  <hr />
+
+                  <h5>示例：</h5>
+                  <pre>例1
+092 $aCN$b26-28$cBM664
+例2
+092 $aCN$b社252增-127</pre>
+                </div>
+                <div class="helpContent">
+                  <h5>094 标准号：</h5>
+                  <p>本字段包含中国国家标准主管部门分配给有关国家标准、行业标准出版物的号码。
+                    本字段选择使用，可重复。</p>
+                  <hr />
+                  <h5>指示符：</h5>
+                  <pre>指示符1：未定义，填空格。
+指示符2：未定义，填空格。</pre>
+                  <hr />
+                  <h5>子字段：</h5>
+                  <pre><img /></pre>
+                  <hr />
+                  <h5>子字段说明：</h5>
+                  <pre>$a 国家代码
+分配该号码机构的国家的标识。不可重复。
+$b 标准号
+由国家标准主管部门分配的号码。不可重复。
+$z 错误的标准号
+错误分配的号码。可重复。</pre>
+                  <hr />
+
+                  <h5>示例：</h5>
+                  <pre>例1 094 $aCN$bGB 4894-85</pre>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">100 通用处理数据</a></li>
+                <li><a href="#">101 作品语种</a></li>
+                <li><a href="#">102 出版或制作国别</a></li>
+                <li><a href="#">105 编码数据字段：文字资料、专著</a></li>
+                <li><a href="#">106 编码数据字段：文字资料——形态特征</a></li>
+                <li><a href="#">110 编码数据字段：连续出版物</a></li>
+                <li><a href="#">115 编码数据字段：投影片、录像制品和电影片</a></li>
+                <li><a href="#">116 编码数据字段：书画刻印作品</a></li>
+                <li><a href="#">117 编码数据字段：三维制品和实物</a></li>
+                <li><a href="#">120 编码数据字段：测绘资料——一般性数据</a></li>
+                <li><a href="#">121 编码数据字段：测绘资料——形态特征</a></li>
+                <li><a href="#">122 编码数据字段：文献内容涵盖期间</a></li>
+                <li><a href="#">123 编码数据字段：测绘资料——比例尺与坐标</a></li>
+                <li><a href="#">124 编码数据字段：测绘资料——特殊资料标志</a></li>
+                <li><a href="#">125 编码数据字段：录音资料与印刷乐谱</a></li>
+                <li><a href="#">126 编码数据字段：录音资料——形态特征</a></li>
+                <li><a href="#">127 编码数据字段：录音资料与印刷乐谱播放时间</a></li>
+                <li><a href="#">128 编码数据字段：音乐演奏与乐谱</a></li>
+                <li><a href="#">130 编码数据字段：缩微制品——形态特征</a></li>
+                <li><a href="#">131 编码数据字段：测绘资料——大地、坐标网格与垂直测量</a></li>
+                <li><a href="#">135 编码数据字段：计算机文件(暂定)</a></li>
+                <li><a href="#">191 编码数据字段：拓片</a></li>
+                <li><a href="#">192 编码数据字段：民族音乐</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">200 题名与责任说明</a></li>
+                <li><a href="#">205 版本说明</a></li>
+                <li><a href="#">206 资料特殊细节项：测绘资料——数学数据</a></li>
+                <li><a href="#">207 资料特殊细节项：连续出版物卷期编号</a></li>
+                <li><a href="#">208 资料特殊细节项：印刷乐谱的特别说明</a></li>
+                <li><a href="#">210 出版发行等</a></li>
+                <li><a href="#">211 预定出版日期</a></li>
+                <li><a href="#">215 载体形态项</a></li>
+                <li><a href="#">225 丛编</a></li>
+                <li><a href="#">230 资料特殊细节项：计算机文件特征(暂定)</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">300 一般性附注</a></li>
+                <li><a href="#">301 标识号附注</a></li>
+                <li><a href="#">302 编码信息附注</a></li>
+                <li><a href="#">303 著录信息一般性附注</a></li>
+                <li><a href="#">304 题名与责任说明附注</a></li>
+                <li><a href="#">305 版本与书目史附注</a></li>
+                <li><a href="#">306 出版发行等附注</a></li>
+                <li><a href="#">307 载体形态附注</a></li>
+                <li><a href="#">308 丛编附注</a></li>
+                <li><a href="#">310 装订及获得方式附注</a></li>
+                <li><a href="#">311 连接字段附注</a></li>
+                <li><a href="#">312 相关题名附注</a></li>
+                <li><a href="#">313 主题附注</a></li>
+                <li><a href="#">314 知识责任附注</a></li>
+                <li><a href="#">315 资料(或出版物类型)特殊细节附注</a></li>
+                <li><a href="#">320 书目、索引附注</a></li>
+                <li><a href="#">321 被索引、摘要和引用附注</a></li>
+                <li><a href="#">322 制作者附注(投影和录像资料及录音)</a></li>
+                <li><a href="#">323 演出者附注(投影和录像资料及录音)</a></li>
+                <li><a href="#">324 原作版本附注</a></li>
+                <li><a href="#">325 复制品附注</a></li>
+                <li><a href="#">326 出版周期附注(连续出版物)</a></li>
+                <li><a href="#">327 内容附注</a></li>
+                <li><a href="#">328 学位论文附注</a></li>
+                <li><a href="#">330 提要、文摘或全文</a></li>
+                <li><a href="#">332 引文</a></li>
+                <li><a href="#">333 使用对象附注</a></li>
+                <li><a href="#">336 计算机文件类型附注</a></li>
+                <li><a href="#">337 计算机文件技术细节附注(暂定)</a></li>
+                <li><a href="#">345 采访信息附注</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">410 丛编</a></li>
+                <li><a href="#">411 附属丛编</a></li>
+                <li><a href="#">421 补编、增刊</a></li>
+                <li><a href="#">422 正编、正刊</a></li>
+                <li><a href="#">423 合订、合刊</a></li>
+                <li><a href="#">430 继承</a></li>
+                <li><a href="#">431 部分继承</a></li>
+                <li><a href="#">432 替代</a></li>
+                <li><a href="#">433 部分替代</a></li>
+                <li><a href="#">434 吸收</a></li>
+                <li><a href="#">435 部分吸收</a></li>
+                <li><a href="#">436 由……，……和……合并而成</a></li>
+                <li><a href="#">437 分自</a></li>
+                <li><a href="#">440 由……继承</a></li>
+                <li><a href="#">441 由……部分继承</a></li>
+                <li><a href="#">442 由……替代</a></li>
+                <li><a href="#">443 由……部分替代</a></li>
+                <li><a href="#">444 并入</a></li>
+                <li><a href="#">445 部分并入</a></li>
+                <li><a href="#">446 分成……，……和……</a></li>
+                <li><a href="#">447 与……，……合并而成……</a></li>
+                <li><a href="#">448 改回</a></li>
+                <li><a href="#">451 同一载体其它版本</a></li>
+                <li><a href="#">452 不同载体版本</a></li>
+                <li><a href="#">453 译为</a></li>
+                <li><a href="#">454 译自</a></li>
+                <li><a href="#">455 复制自</a></li>
+                <li><a href="#">456 复制为</a></li>
+                <li><a href="#">461 总集</a></li>
+                <li><a href="#">462 分集</a></li>
+                <li><a href="#">463 单册</a></li>
+                <li><a href="#">464 单册分析</a></li>
+                <li><a href="#">470 被评论作品</a></li>
+                <li><a href="#">488 其它相关作品</a></li>
+
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">500 统一题名</a></li>
+                <li><a href="#">501 作品集统一题名</a></li>
+                <li><a href="#">503 统一惯用标目</a></li>
+                <li><a href="#">510 并列正题名</a></li>
+                <li><a href="#">512 封面题名</a></li>
+                <li><a href="#">513 附加题名页题名</a></li>
+                <li><a href="#">514 卷端题名</a></li>
+                <li><a href="#">515 逐页题名</a></li>
+                <li><a href="#">516 书脊题名</a></li>
+                <li><a href="#">517 其它题名</a></li>
+                <li><a href="#">520 前题名(适用于连续出版物)</a></li>
+                <li><a href="#">530 识别题名(Key Title)(适用于连续出版物)</a></li>
+                <li><a href="#">531 缩略题名(适用于连续出版物)</a></li>
+                <li><a href="#">532 完整题名(适用于连续出版物)</a></li>
+                <li><a href="#">540 编目员补充的附加题名</a></li>
+                <li><a href="#">541 编目员补充的翻译题名</a></li>
+                <li><a href="#">545 章节题名</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">600 个人名称主题</a></li>
+                <li><a href="#">601 团体名称主题</a></li>
+                <li><a href="#">602 家族名称主题</a></li>
+                <li><a href="#">604 名称和题名主题</a></li>
+                <li><a href="#">605 题名主题</a></li>
+                <li><a href="#">606 学科名称主题</a></li>
+                <li><a href="#">607 地名主题</a></li>
+                <li><a href="#">610 非控主题词</a></li>
+                <li><a href="#">615 主题类目(暂定)</a></li>
+                <li><a href="#">620 出版地／ 制作地检索点</a></li>
+                <li><a href="#">626 技术细节检索点(计算机文件)(暂定)</a></li>
+                <li><a href="#">660 地区代码(GAC)</a></li>
+                <li><a href="#">661 年代范围代码</a></li>
+                <li><a href="#">670 保留词间关系标引法(PRECIS)</a></li>
+                <li><a href="#">675 国际十进分类法分类号(UDS)</a></li>
+                <li><a href="#">676 杜威十进分类法分类号(DDC)</a></li>
+                <li><a href="#">680 美国国会图书馆分类法分类号</a></li>
+                <li><a href="#">686 其它分类号</a></li>
+                <li><a href="#">690 中国图书馆图书分类法分类号(CLC)</a></li>
+                <li><a href="#">692 中国科学院图书馆图书分类法分类号</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">700 个人名称——主要知识责任</a></li>
+                <li><a href="#">701 个人名称——等同知识责任</a></li>
+                <li><a href="#">702 个人名称——次要知识责任</a></li>
+                <li><a href="#">710 团体名称——主要知识责任</a></li>
+                <li><a href="#">711 团体名称——等同知识责任</a></li>
+                <li><a href="#">712 团体名称——次要知识责任</a></li>
+                <li><a href="#">720 家族名称——主要知识责任</a></li>
+                <li><a href="#">721 家族名称——等同知识责任</a></li>
+                <li><a href="#">722 家族名称——次要知识责任</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="TabbedPanelsContent">
+        <table width="100%;" cellspacing="0">
+          <tr style="background-color:#EEEEEE;">
+            <td class="leftList">
+              <ul>
+                <li><a href="#">801 记录来源</a></li>
+                <li><a href="#">802 ISDS中心</a></li>
+              </ul>
+            </td>
+            <td style="vertical-align:top;padding: 0 0 0 4px;">
+              <div class="helpContentOut">
+
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+  </script>
+</body>
+
+</html>
